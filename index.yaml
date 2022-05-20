@@ -1,0 +1,478 @@
+apiVersion: v1
+entries:
+  aodh:
+  - apiVersion: v1
+    appVersion: v1.0.0
+    created: "2022-05-20T20:20:09.326671996Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../../openstack-helm-infra/helm-toolkit
+      version: '>= 0.1.0'
+    description: Openstack-Helm Aodh
+    digest: db6badab8af588371cab018467bda5969f0317b0d153f1e819905c3c6afd4154
+    home: https://docs.openstack.org/aodh/latest/
+    maintainers:
+    - name: OpenStack-Helm Authors
+    name: aodh
+    sources:
+    - https://opendev.org/openstack/aodh
+    - https://opendev.org/openstack/openstack-helm
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/aodh-0.2.4/aodh-0.2.4.tgz
+    version: 0.2.4
+  barbican:
+  - apiVersion: v1
+    appVersion: v1.0.0
+    created: "2022-05-20T20:20:09.541826396Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../../openstack-helm-infra/helm-toolkit
+      version: '>= 0.1.0'
+    description: OpenStack-Helm Barbican
+    digest: 88ddfa52dfe23cb9457c551cf8510726b2ed7b2dca8c0151a9fd1ae3d87b0f46
+    home: https://docs.openstack.org/barbican/latest/
+    icon: https://www.openstack.org/themes/openstack/images/project-mascots/Barbican/OpenStack_Project_Barbican_vertical.png
+    maintainers:
+    - name: OpenStack-Helm Authors
+    name: barbican
+    sources:
+    - https://opendev.org/openstack/barbican
+    - https://opendev.org/openstack/openstack-helm
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/barbican-0.2.13/barbican-0.2.13.tgz
+    version: 0.2.13
+  ceilometer:
+  - apiVersion: v1
+    appVersion: v1.0.0
+    created: "2022-05-20T20:20:09.773262016Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../../openstack-helm-infra/helm-toolkit
+      version: '>= 0.1.0'
+    description: OpenStack-Helm Ceilometer
+    digest: 383712494ac4b22ff3b6958df685215e4e987e8f0db9729a7ab131c3cc972881
+    home: https://docs.openstack.org/ceilometer/latest/
+    maintainers:
+    - name: OpenStack-Helm Authors
+    name: ceilometer
+    sources:
+    - https://opendev.org/openstack/ceilometer
+    - https://opendev.org/openstack/openstack-helm
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/ceilometer-0.2.5/ceilometer-0.2.5.tgz
+    version: 0.2.5
+  cinder:
+  - apiVersion: v1
+    appVersion: v1.0.0
+    created: "2022-05-20T20:20:09.985948783Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../../openstack-helm-infra/helm-toolkit
+      version: '>= 0.1.0'
+    description: OpenStack-Helm Cinder
+    digest: 95044ee0de72f7c0530009db6f26c73d3b15a0925a3e0e83677946c96676bd01
+    home: https://docs.openstack.org/cinder/latest/
+    icon: https://www.openstack.org/themes/openstack/images/project-mascots/Cinder/OpenStack_Project_Cinder_vertical.png
+    maintainers:
+    - name: OpenStack-Helm Authors
+    name: cinder
+    sources:
+    - https://opendev.org/openstack/cinder
+    - https://opendev.org/openstack/openstack-helm
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/cinder-0.2.21/cinder-0.2.21.tgz
+    version: 0.2.21
+  cyborg:
+  - apiVersion: v1
+    appVersion: v1.0.0
+    created: "2022-05-20T20:20:10.197309732Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../../openstack-helm-infra/helm-toolkit
+      version: '>= 0.1.0'
+    description: OpenStack-Helm Cyborg
+    digest: 2116d1de97a7bbe8d2facdf140d36f09ba7e97d81c38c3e049e0276e2036966f
+    home: https://docs.openstack.org/cyborg
+    icon: https://www.openstack.org/themes/openstack/images/project-mascots/Cyborg/OpenStack_Project_Cyborg_vertical.png
+    maintainers:
+    - name: OpenStack-Helm Authors
+    name: cyborg
+    sources:
+    - https://opendev.org/openstack/cyborg
+    - https://opendev.org/openstack/openstack-helm
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/cyborg-0.1.1/cyborg-0.1.1.tgz
+    version: 0.1.1
+  designate:
+  - apiVersion: v1
+    appVersion: v1.0.0
+    created: "2022-05-20T20:20:10.431246086Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../../openstack-helm-infra/helm-toolkit
+      version: '>= 0.1.0'
+    description: OpenStack-Helm Designate
+    digest: 2f05620e3b88a89363d88600ad92538ab073caf15de207b5cd7c10dce37c7c69
+    home: https://docs.openstack.org/designate/latest/
+    icon: https://www.openstack.org/themes/openstack/images/project-mascots/Designate/OpenStack_Project_Designate_vertical.jpg
+    maintainers:
+    - name: OpenStack-Helm Authors
+    name: designate
+    sources:
+    - https://opendev.org/openstack/designate
+    - https://opendev.org/openstack/openstack-helm
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/designate-0.2.5/designate-0.2.5.tgz
+    version: 0.2.5
+  glance:
+  - apiVersion: v1
+    appVersion: v1.0.0
+    created: "2022-05-20T20:20:10.659272518Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../../openstack-helm-infra/helm-toolkit
+      version: '>= 0.1.0'
+    description: OpenStack-Helm Glance
+    digest: 06a661217e2b0ee9cc3903e449715cf75c3b972d6eb1234555e4b049de28f8a4
+    home: https://docs.openstack.org/glance/latest/
+    icon: https://www.openstack.org/themes/openstack/images/project-mascots/Glance/OpenStack_Project_Glance_vertical.png
+    maintainers:
+    - name: OpenStack-Helm Authors
+    name: glance
+    sources:
+    - https://opendev.org/openstack/glance
+    - https://opendev.org/openstack/openstack-helm
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/glance-0.3.5/glance-0.3.5.tgz
+    version: 0.3.5
+  heat:
+  - apiVersion: v1
+    appVersion: v1.0.0
+    created: "2022-05-20T20:20:10.890930743Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../../openstack-helm-infra/helm-toolkit
+      version: '>= 0.1.0'
+    description: OpenStack-Helm Heat
+    digest: 0b4af6a2a0070caeabd878f263478c9b4ef7fcb812d3ceca3902433647efcde4
+    home: https://docs.openstack.org/heat/latest/
+    icon: https://www.openstack.org/themes/openstack/images/project-mascots/Heat/OpenStack_Project_Heat_vertical.png
+    maintainers:
+    - name: OpenStack-Helm Authors
+    name: heat
+    sources:
+    - https://opendev.org/openstack/heat
+    - https://opendev.org/openstack/openstack-helm
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/heat-0.2.12/heat-0.2.12.tgz
+    version: 0.2.12
+  horizon:
+  - apiVersion: v1
+    appVersion: v1.0.0
+    created: "2022-05-20T20:20:11.124226981Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../../openstack-helm-infra/helm-toolkit
+      version: '>= 0.1.0'
+    description: OpenStack-Helm Horizon
+    digest: 366a0de14a7071d335f23e68fced72740b84381d11e3a3513e1d1c205ac92e2c
+    home: https://docs.openstack.org/horizon/latest/
+    icon: https://www.openstack.org/themes/openstack/images/project-mascots/Horizon/OpenStack_Project_Horizon_vertical.png
+    maintainers:
+    - name: OpenStack-Helm Authors
+    name: horizon
+    sources:
+    - https://opendev.org/openstack/horizon
+    - https://opendev.org/openstack/openstack-helm
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/horizon-0.2.22/horizon-0.2.22.tgz
+    version: 0.2.22
+  ironic:
+  - apiVersion: v1
+    appVersion: v1.0.0
+    created: "2022-05-20T20:20:11.333307938Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../../openstack-helm-infra/helm-toolkit
+      version: '>= 0.1.0'
+    description: OpenStack-Helm Ironic
+    digest: f6ebe9cf4e162119241c34615cbc240c3ae5a84179f09e9897554d612d9261f6
+    home: https://docs.openstack.org/ironic/latest/
+    icon: https://www.openstack.org/themes/openstack/images/project-mascots/Ironic/OpenStack_Project_Ironic_vertical.png
+    maintainers:
+    - name: OpenStack-Helm Authors
+    name: ironic
+    sources:
+    - https://opendev.org/openstack/ironic
+    - https://opendev.org/openstack/openstack-helm
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/ironic-0.2.5/ironic-0.2.5.tgz
+    version: 0.2.5
+  keystone:
+  - apiVersion: v1
+    appVersion: v1.0.0
+    created: "2022-05-20T20:20:11.561551638Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../../openstack-helm-infra/helm-toolkit
+      version: '>= 0.1.0'
+    description: OpenStack-Helm Keystone
+    digest: 85979f5bceb46cbb42a22bc475ef27d28aa9f09d836c27c12fa606d3cdf81804
+    home: https://docs.openstack.org/keystone/latest/
+    icon: https://www.openstack.org/themes/openstack/images/project-mascots/Keystone/OpenStack_Project_Keystone_vertical.png
+    maintainers:
+    - name: OpenStack-Helm Authors
+    name: keystone
+    sources:
+    - https://opendev.org/openstack/keystone
+    - https://opendev.org/openstack/openstack-helm
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/keystone-0.2.25/keystone-0.2.25.tgz
+    version: 0.2.25
+  magnum:
+  - apiVersion: v1
+    appVersion: v1.0.0
+    created: "2022-05-20T20:20:11.782608184Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../../openstack-helm-infra/helm-toolkit
+      version: '>= 0.1.0'
+    description: OpenStack-Helm Magnum
+    digest: db0c04909010d5016ac6e5fde153c62b6f1139072de9e2f678b70e02918e478b
+    home: https://docs.openstack.org/magnum/latest/
+    icon: https://www.openstack.org/themes/openstack/images/project-mascots/Magnum/OpenStack_Project_Magnum_vertical.png
+    maintainers:
+    - name: OpenStack-Helm Authors
+    name: magnum
+    sources:
+    - https://opendev.org/openstack/magnum
+    - https://opendev.org/openstack/openstack-helm
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/magnum-0.2.6/magnum-0.2.6.tgz
+    version: 0.2.6
+  masakari:
+  - apiVersion: v1
+    appVersion: v1.0.0
+    created: "2022-05-20T20:20:12.015797068Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../../openstack-helm-infra/helm-toolkit
+      version: '>= 0.1.0'
+    description: OpenStack-Helm Masakari
+    digest: 7e40fb40cee32ce6cc419fd1e9b03820423d1fa5c2c2ad1c40f49004372744ea
+    home: https://docs.openstack.org/developer/masakari
+    icon: https://www.openstack.org/themes/openstack/images/project-mascots/Masakari/OpenStack_Project_masakari_vertical.png
+    maintainers:
+    - name: OpenStack-Helm Authors
+    name: masakari
+    sources:
+    - https://opendev.org/openstack/masakari
+    - https://opendev.org/openstack/masakari-monitors
+    - https://opendev.org/openstack/openstack-helm
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/masakari-0.1.4/masakari-0.1.4.tgz
+    version: 0.1.4
+  mistral:
+  - apiVersion: v1
+    appVersion: v1.0.0
+    created: "2022-05-20T20:20:12.215996269Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../../openstack-helm-infra/helm-toolkit
+      version: '>= 0.1.0'
+    description: OpenStack-Helm Mistral
+    digest: 42fcb58e4de3a1ec95e8058448fc98e83e76e2c2326ae46f049ad496af6ea315
+    home: https://docs.openstack.org/mistral/latest/
+    icon: https://www.openstack.org/themes/openstack/images/project-mascots/Mistral/OpenStack_Project_Mistral_vertical.png
+    maintainers:
+    - name: OpenStack-Helm Authors
+    name: mistral
+    sources:
+    - https://opendev.org/openstack/mistral
+    - https://opendev.org/openstack/openstack-helm
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/mistral-0.2.4/mistral-0.2.4.tgz
+    version: 0.2.4
+  neutron:
+  - apiVersion: v1
+    appVersion: v1.0.0
+    created: "2022-05-20T20:20:12.443532475Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../../openstack-helm-infra/helm-toolkit
+      version: '>= 0.1.0'
+    description: OpenStack-Helm Neutron
+    digest: 7668aff7538081895e9f542b2c7ca582caecc9497f143ec90766fbd4a7a57cda
+    home: https://docs.openstack.org/neutron/latest/
+    icon: https://www.openstack.org/themes/openstack/images/project-mascots/Neutron/OpenStack_Project_Neutron_vertical.png
+    maintainers:
+    - name: OpenStack-Helm Authors
+    name: neutron
+    sources:
+    - https://opendev.org/openstack/neutron
+    - https://opendev.org/openstack/openstack-helm
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/neutron-0.2.17/neutron-0.2.17.tgz
+    version: 0.2.17
+  nova:
+  - apiVersion: v1
+    appVersion: v1.0.0
+    created: "2022-05-20T20:20:12.668504906Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../../openstack-helm-infra/helm-toolkit
+      version: '>= 0.1.0'
+    description: OpenStack-Helm Nova
+    digest: a26f005fb53d8e9db33e778cf2bc3ac9836c391ee49744c63e1252a7236f2d71
+    home: https://docs.openstack.org/nova/latest/
+    icon: https://www.openstack.org/themes/openstack/images/project-mascots/Nova/OpenStack_Project_Nova_vertical.png
+    maintainers:
+    - name: OpenStack-Helm Authors
+    name: nova
+    sources:
+    - https://opendev.org/openstack/nova
+    - https://opendev.org/openstack/openstack-helm
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/nova-0.2.39/nova-0.2.39.tgz
+    version: 0.2.39
+  octavia:
+  - apiVersion: v1
+    appVersion: v1.0.0
+    created: "2022-05-20T20:20:12.889229012Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../../openstack-helm-infra/helm-toolkit
+      version: '>= 0.1.0'
+    description: OpenStack-Helm Octavia
+    digest: 45017bbd90e0bda3b17d1ab5a844300cece936f8428ab06cb99d4fb73a07dc78
+    home: https://docs.openstack.org/octavia/latest/
+    icon: https://www.openstack.org/themes/openstack/images/project-mascots/Octavia/OpenStack_Project_Octavia_vertical.png
+    maintainers:
+    - name: OpenStack-Helm Authors
+    name: octavia
+    sources:
+    - https://opendev.org/openstack/octavia
+    - https://opendev.org/openstack/openstack-helm
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/octavia-0.2.5/octavia-0.2.5.tgz
+    version: 0.2.5
+  openstack:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2022-05-20T20:20:13.258324391Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../../openstack-helm-infra/helm-toolkit
+      version: '>0.1.0'
+    - name: mariadb
+      repository: file://../../openstack-helm-infra/mariadb
+      version: '>0.1.0'
+    - name: rabbitmq
+      repository: file://../../openstack-helm-infra/rabbitmq
+      version: '>0.1.0'
+    - name: memcached
+      repository: file://../../openstack-helm-infra/memcached
+      version: '>0.1.0'
+    - name: keystone
+      repository: file://../keystone
+      version: '>0.1.0'
+    - name: heat
+      repository: file://../heat
+      version: '>0.1.0'
+    - name: glance
+      repository: file://../glance
+      version: '>0.1.0'
+    description: A chart for openstack helm commmon deployment items
+    digest: 37715f1eb6b97f883431b9e9a3812ad5d064e7a5c490e34feef9260b5b2bbf58
+    maintainers:
+    - name: OpenStack-Helm Authors
+    name: openstack
+    type: application
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/openstack-0.1.0/openstack-0.1.0.tgz
+    version: 0.1.0
+  placement:
+  - apiVersion: v1
+    appVersion: v1.0.0
+    created: "2022-05-20T20:20:13.484886969Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../../openstack-helm-infra/helm-toolkit
+      version: '>= 0.1.0'
+    description: OpenStack-Helm Placement
+    digest: 1d5c09e38ede0b585f786be0292062ea8f7ddf6bc96d003f4a88a206ed0e39b3
+    home: https://docs.openstack.org/placement/latest/
+    icon: https://www.openstack.org/themes/openstack/images/project-mascots/Placement/OpenStack_Project_Placement_vertical.png
+    maintainers:
+    - name: OpenStack-Helm Authors
+    name: placement
+    sources:
+    - https://opendev.org/openstack/placement
+    - https://opendev.org/openstack/openstack-helm
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/placement-0.2.8/placement-0.2.8.tgz
+    version: 0.2.8
+  rally:
+  - apiVersion: v1
+    appVersion: v1.0.0
+    created: "2022-05-20T20:20:13.721992158Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../../openstack-helm-infra/helm-toolkit
+      version: '>= 0.1.0'
+    description: OpenStack-Helm rally
+    digest: 9bf1e63b5a6e9069c2a509cef18ff78032cc9fd40669371b2396bc896eab3999
+    home: https://docs.openstack.org/developer/rally
+    icon: https://www.openstack.org/themes/openstack/images/project-mascots/rally/OpenStack_Project_rally_vertical.png
+    maintainers:
+    - name: OpenStack-Helm Authors
+    name: rally
+    sources:
+    - https://opendev.org/openstack/rally
+    - https://opendev.org/openstack/openstack-helm
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/rally-0.2.4/rally-0.2.4.tgz
+    version: 0.2.4
+  senlin:
+  - apiVersion: v1
+    appVersion: v1.0.0
+    created: "2022-05-20T20:20:13.950210484Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../../openstack-helm-infra/helm-toolkit
+      version: '>= 0.1.0'
+    description: OpenStack-Helm Senlin
+    digest: e28caa30a6b8b96f41eb97408a27347ab9043a555cb009e4521578d4956bb30b
+    home: https://docs.openstack.org/senlin/latest/
+    icon: https://www.openstack.org/themes/openstack/images/project-mascots/Senlin/OpenStack_Project_Senlin_vertical.png
+    maintainers:
+    - name: OpenStack-Helm Authors
+    name: senlin
+    sources:
+    - https://opendev.org/openstack/senlin
+    - https://opendev.org/openstack/openstack-helm
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/senlin-0.2.5-1/senlin-0.2.5-1.tgz
+    version: 0.2.5-1
+  tempest:
+  - apiVersion: v1
+    appVersion: v1.0.0
+    created: "2022-05-20T20:20:14.149197649Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../../openstack-helm-infra/helm-toolkit
+      version: '>= 0.1.0'
+    description: OpenStack-Helm Tempest
+    digest: 44e1f7caf611b330f06f1fce9315d4e5b03bb2b4423adfb2281963ddc84990ed
+    home: https://docs.openstack.org/tempest/latest/
+    icon: https://www.openstack.org/themes/openstack/images/project-mascots/tempest/OpenStack_Project_tempest_vertical.png
+    maintainers:
+    - name: OpenStack-Helm Authors
+    name: tempest
+    sources:
+    - https://opendev.org/openstack/tempest
+    - https://opendev.org/openstack/openstack-helm
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/tempest-0.2.4/tempest-0.2.4.tgz
+    version: 0.2.4
+generated: "2022-05-20T20:20:14.14922285Z"
