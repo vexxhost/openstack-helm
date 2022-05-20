@@ -1,0 +1,33 @@
+on:
+  push:
+    branches:
+      - downstream
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+    - uses: azure/setup-helm@v1
+    - uses: actions/setup-python@v3
+    - uses: helm/chart-testing-action@v2.2.1
+    - run: ct lint --target-branch downstream --chart-dirs .
+
+  release:
+    runs-on: ubuntu-latest
+    needs: lint
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+    - run: git clone https://opendev.org/openstack/openstack-helm-infra ../openstack-helm-infra
+    - uses: azure/setup-helm@v1
+    - run: git config user.name "$GITHUB_ACTOR"
+    - run: git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
+    - uses: helm/chart-releaser-action@v1.4.0
+      with:
+        charts_dir: .
+      env:
+        CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
