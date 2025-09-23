@@ -41,7 +41,7 @@
   "kubernetes-keystone-webhook": "2025.1.0",
   "kubernetes-node-problem-detector": "2025.1.0",
   "ldap": "2025.1.0",
-  "libvirt": "2025.1.0",
+  "libvirt": "1.0.0",
   "local-storage": "2025.1.0",
   "local-volume-provisioner": "2025.1.0",
   "lockdown": "2025.1.0",
