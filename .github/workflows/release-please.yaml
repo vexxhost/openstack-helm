@@ -1,13 +1,28 @@
-name: release
+name: release-please
 
 on:
   push:
     branches:
       - main
 
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
 jobs:
-  publish:
+  release-please:
     runs-on: ubuntu-latest
+    steps:
+      - uses: googleapis/release-please-action@c2a5a2bd6a758a0937f1ddb1e8950609867ed15c # v4.3.0
+        id: release
+    outputs:
+      releases_created: ${{ steps.release.outputs.releases_created }}
+
+  publish-charts:
+    needs: release-please
+    runs-on: ubuntu-latest
+    if: needs.release-please.outputs.releases_created == 'true'
     permissions:
       pages: write
       contents: write

@@ -1,0 +1,19 @@
+name: pr
+
+on:
+  pull_request:
+    types:
+      - edited
+      - opened
+      - reopened
+      - synchronize
+
+jobs:
+  title:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    steps:
+      - uses: ytanikin/pr-conventional-commits@b72758283dcbee706975950e96bc4bf323a8d8c0 # 1.4.2
+        with:
+          task_types: '["build", "chore", "ci", "docs", "feat", "fix", "perf", "refactor", "revert", "style", "test"]'
