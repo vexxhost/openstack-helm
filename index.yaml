@@ -1,0 +1,1758 @@
+apiVersion: v1
+entries:
+  aodh:
+  - apiVersion: v2
+    appVersion: v1.0.0
+    created: "2025-09-23T17:09:36.060105389Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../helm-toolkit
+      version: '>= 0.1.0'
+    description: Openstack-Helm Aodh
+    digest: 35bee5e457aa8a9207251344ae62daf57f1844b82617c8b6deff4bbd0014bce1
+    home: https://docs.openstack.org/aodh/latest/
+    maintainers:
+    - name: OpenStack-Helm Authors
+    name: aodh
+    sources:
+    - https://opendev.org/openstack/aodh
+    - https://opendev.org/openstack/openstack-helm
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/aodh-2025.1.0/aodh-2025.1.0.tgz
+    version: 2025.1.0
+  barbican:
+  - apiVersion: v2
+    appVersion: v1.0.0
+    created: "2025-09-23T17:09:36.216244393Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../helm-toolkit
+      version: '>= 0.1.0'
+    description: OpenStack-Helm Barbican
+    digest: 9c4090e7b3005ef9acbaf28a21b57745ee7ea072a09c90b87b50507d879c5d9b
+    home: https://docs.openstack.org/barbican/latest/
+    icon: https://www.openstack.org/themes/openstack/images/project-mascots/Barbican/OpenStack_Project_Barbican_vertical.png
+    maintainers:
+    - name: OpenStack-Helm Authors
+    name: barbican
+    sources:
+    - https://opendev.org/openstack/barbican
+    - https://opendev.org/openstack/openstack-helm
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/barbican-2025.1.0/barbican-2025.1.0.tgz
+    version: 2025.1.0
+  blazar:
+  - apiVersion: v2
+    appVersion: v1.0.0
+    created: "2025-09-23T17:09:36.453953239Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../helm-toolkit
+      version: '>= 0.1.0'
+    description: OpenStack Resource Reservation Service
+    digest: 0940b77f51b481a6080f6596b8e0b4f923ae663fbb2f1e20e686b394ac1df0ca
+    home: https://docs.openstack.org/blazar/
+    icon: https://openmetal.io/wp-content/uploads/2024/10/OpenStack_Project_Blazar-300x300.jpg
+    keywords:
+    - openstack
+    - reservation
+    - helm
+    maintainers:
+    - email: openstack-helm@lists.openstack.org
+      name: OpenStack Helm Team
+    name: blazar
+    sources:
+    - https://opendev.org/openstack/blazar
+    type: application
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/blazar-2025.1.0/blazar-2025.1.0.tgz
+    version: 2025.1.0
+  ca-clusterissuer:
+  - apiVersion: v2
+    appVersion: "1.0"
+    created: "2025-09-23T17:09:36.678268049Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../helm-toolkit
+      version: '>= 0.1.0'
+    description: Certificate Issuer chart for OSH
+    digest: a1eee7bd4d56add7439deca2144b9de21ea7be3370266eec2229a574d516bc3a
+    home: https://cert-manager.io/
+    name: ca-clusterissuer
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/ca-clusterissuer-2025.1.0/ca-clusterissuer-2025.1.0.tgz
+    version: 2025.1.0
+  ca-issuer:
+  - apiVersion: v2
+    appVersion: "1.0"
+    created: "2025-09-23T17:09:36.841875261Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../helm-toolkit
+      version: '>= 0.1.0'
+    description: Certificate Issuer chart for OSH
+    digest: cf8db24547db97e1598cff6e1a2bf66d693a562ff359a622f7cffd890ef57814
+    home: https://cert-manager.io/
+    name: ca-issuer
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/ca-issuer-2025.1.0/ca-issuer-2025.1.0.tgz
+    version: 2025.1.0
+  ceilometer:
+  - apiVersion: v2
+    appVersion: v1.0.0
+    created: "2025-09-23T17:09:37.018435848Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../helm-toolkit
+      version: '>= 0.1.0'
+    description: OpenStack-Helm Ceilometer
+    digest: 8e37251c753be51fabfa052f978dc4754f92f9acb7f4a30e117a1a07c27a4348
+    home: https://docs.openstack.org/ceilometer/latest/
+    maintainers:
+    - name: OpenStack-Helm Authors
+    name: ceilometer
+    sources:
+    - https://opendev.org/openstack/ceilometer
+    - https://opendev.org/openstack/openstack-helm
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/ceilometer-2025.1.0/ceilometer-2025.1.0.tgz
+    version: 2025.1.0
+  ceph-adapter-rook:
+  - apiVersion: v2
+    appVersion: v1.0.0
+    created: "2025-09-23T17:09:37.231327527Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../helm-toolkit
+      version: '>= 0.1.0'
+    description: OpenStack-Helm Ceph Adapter Rook
+    digest: eee33f4a1d51b98b3311add6e25021c26ca9f27f0e8dc19c175168ad2d46eb30
+    home: https://github.com/ceph/ceph
+    name: ceph-adapter-rook
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/ceph-adapter-rook-2025.1.0/ceph-adapter-rook-2025.1.0.tgz
+    version: 2025.1.0
+  ceph-client:
+  - apiVersion: v2
+    appVersion: v1.0.0
+    created: "2025-09-23T17:09:37.50662692Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../helm-toolkit
+      version: '>= 0.1.0'
+    description: OpenStack-Helm Ceph Client
+    digest: affebcede53795afddf7b84084e386907bcb989d6c01b117d5b88a508c410b58
+    home: https://github.com/ceph/ceph-client
+    name: ceph-client
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/ceph-client-2025.1.0/ceph-client-2025.1.0.tgz
+    version: 2025.1.0
+  ceph-mon:
+  - apiVersion: v2
+    appVersion: v1.0.0
+    created: "2025-09-23T17:09:37.707801322Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../helm-toolkit
+      version: '>= 0.1.0'
+    description: OpenStack-Helm Ceph Mon
+    digest: b96076dc585062fba13104f721bcb2ac543a7b3d17512158a33c77e0b57ee832
+    home: https://github.com/ceph/ceph
+    name: ceph-mon
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/ceph-mon-2025.1.0/ceph-mon-2025.1.0.tgz
+    version: 2025.1.0
+  ceph-osd:
+  - apiVersion: v2
+    appVersion: v1.0.0
+    created: "2025-09-23T17:09:37.880690973Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../helm-toolkit
+      version: '>= 0.1.0'
+    description: OpenStack-Helm Ceph OSD
+    digest: 3cacfc2888e223d265a56cbceff822517c30135f639e5d28ae863905ae6b16e3
+    home: https://github.com/ceph/ceph
+    name: ceph-osd
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/ceph-osd-2025.1.0/ceph-osd-2025.1.0.tgz
+    version: 2025.1.0
+  ceph-provisioners:
+  - apiVersion: v2
+    appVersion: v1.0.0
+    created: "2025-09-23T17:09:38.048793553Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../helm-toolkit
+      version: '>= 0.1.0'
+    description: OpenStack-Helm Ceph Provisioner
+    digest: 21269aed1306ea656480d5413f012cb845e8ff06631471915a5b05be96a856f3
+    home: https://github.com/ceph/ceph
+    name: ceph-provisioners
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/ceph-provisioners-2025.1.0/ceph-provisioners-2025.1.0.tgz
+    version: 2025.1.0
+  ceph-rgw:
+  - apiVersion: v2
+    appVersion: v1.0.0
+    created: "2025-09-23T17:09:38.250575757Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../helm-toolkit
+      version: '>= 0.1.0'
+    description: OpenStack-Helm Ceph RadosGW
+    digest: c8c3cd0ed329530ebc3d15850a4ee9628cf540a6673641ba7f50f0b8251e8ed1
+    home: https://github.com/ceph/ceph
+    name: ceph-rgw
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/ceph-rgw-2025.1.0/ceph-rgw-2025.1.0.tgz
+    version: 2025.1.0
+  cert-rotation:
+  - apiVersion: v2
+    appVersion: "1.0"
+    created: "2025-09-23T17:09:38.493488812Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../helm-toolkit
+      version: '>= 0.1.0'
+    description: Rotate the certificates generated by cert-manager
+    digest: 36c67ccb6e074068b05207aa60f77f32a2072fd6677b803750f2477986541b67
+    home: https://cert-manager.io/
+    name: cert-rotation
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/cert-rotation-2025.1.0/cert-rotation-2025.1.0.tgz
+    version: 2025.1.0
+  cinder:
+  - apiVersion: v2
+    appVersion: v1.0.0
+    created: "2025-09-23T17:09:38.696800669Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../helm-toolkit
+      version: '>= 0.1.0'
+    description: OpenStack-Helm Cinder
+    digest: b3255f259f8bad91a6a024bd6fc09ef7964786760b91ece7053b1db9c617245f
+    home: https://docs.openstack.org/cinder/latest/
+    icon: https://www.openstack.org/themes/openstack/images/project-mascots/Cinder/OpenStack_Project_Cinder_vertical.png
+    maintainers:
+    - name: OpenStack-Helm Authors
+    name: cinder
+    sources:
+    - https://opendev.org/openstack/cinder
+    - https://opendev.org/openstack/openstack-helm
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/cinder-2025.1.0/cinder-2025.1.0.tgz
+    version: 2025.1.0
+  cloudkitty:
+  - apiVersion: v2
+    appVersion: v1.0.0
+    created: "2025-09-23T17:09:38.87895816Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../helm-toolkit
+      version: '>= 0.1.0'
+    description: OpenStack-Helm Cloudkitty
+    digest: 443b5998f0dbe9fd9b5483a4eb9b9ac8ef30143ee867f3e4696d9e938d133373
+    home: https://docs.openstack.org/cloudkitty/latest/
+    icon: https://opendev.org/openstack/cloudkitty/media/branch/master/doc/source/images/cloudkitty-logo.png
+    maintainers:
+    - name: OpenStack-Helm Authors
+    name: cloudkitty
+    sources:
+    - https://opendev.org/openstack/cloudkitty
+    - https://opendev.org/openstack/openstack-helm
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/cloudkitty-2025.1.0/cloudkitty-2025.1.0.tgz
+    version: 2025.1.0
+  cyborg:
+  - apiVersion: v2
+    appVersion: v1.0.0
+    created: "2025-09-23T17:09:39.048841903Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../helm-toolkit
+      version: '>= 0.1.0'
+    description: OpenStack-Helm Cyborg
+    digest: e1f12a2c36e50a0eb45801682d3dc9c9d172e68b66e29eedf9617d80f058d01f
+    home: https://docs.openstack.org/cyborg
+    icon: https://www.openstack.org/themes/openstack/images/project-mascots/Cyborg/OpenStack_Project_Cyborg_vertical.png
+    maintainers:
+    - name: OpenStack-Helm Authors
+    name: cyborg
+    sources:
+    - https://opendev.org/openstack/cyborg
+    - https://opendev.org/openstack/openstack-helm
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/cyborg-2025.1.0/cyborg-2025.1.0.tgz
+    version: 2025.1.0
+  daemonjob-controller:
+  - apiVersion: v2
+    appVersion: v1.0.0
+    created: "2025-09-23T17:09:39.248124532Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../helm-toolkit
+      version: '>= 0.1.0'
+    description: A Helm chart for DaemonjobController
+    digest: 3b2acadd87e9660890b79ca390216f1ea484fc0501dfd361c8f93e280bb69ebe
+    home: https://opendev.org/openstack
+    name: daemonjob-controller
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/daemonjob-controller-2025.1.0/daemonjob-controller-2025.1.0.tgz
+    version: 2025.1.0
+  designate:
+  - apiVersion: v2
+    appVersion: v1.0.0
+    created: "2025-09-23T17:09:39.495428389Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../helm-toolkit
+      version: '>= 0.1.0'
+    description: OpenStack-Helm Designate
+    digest: e05bebe5bcfbb51a366ea8bcbb9ace22fc22cf00517cab56528c81213c5c1614
+    home: https://docs.openstack.org/designate/latest/
+    icon: https://www.openstack.org/themes/openstack/images/project-mascots/Designate/OpenStack_Project_Designate_vertical.jpg
+    maintainers:
+    - name: OpenStack-Helm Authors
+    name: designate
+    sources:
+    - https://opendev.org/openstack/designate
+    - https://opendev.org/openstack/openstack-helm
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/designate-2025.1.0/designate-2025.1.0.tgz
+    version: 2025.1.0
+  elastic-apm-server:
+  - apiVersion: v2
+    appVersion: v6.2.3
+    created: "2025-09-23T17:09:39.655937151Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../helm-toolkit/
+      version: '>= 0.1.0'
+    description: OpenStack-Helm Elastic APM Server
+    digest: 98dd2deef308a60eadba9a76ff5502f10a29e0a12c0dfc559a1f55cbd0bfc016
+    home: https://www.elastic.co/guide/en/apm/get-started/current/index.html
+    maintainers:
+    - name: OpenStack-Helm Authors
+    name: elastic-apm-server
+    sources:
+    - https://github.com/elastic/apm-server
+    - https://opendev.org/openstack/openstack-helm
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/elastic-apm-server-2025.1.0/elastic-apm-server-2025.1.0.tgz
+    version: 2025.1.0
+  elastic-filebeat:
+  - apiVersion: v2
+    appVersion: v7.1.0
+    created: "2025-09-23T17:09:39.849613312Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../helm-toolkit/
+      version: '>= 0.1.0'
+    description: OpenStack-Helm Elastic Filebeat
+    digest: 3bd22e133f58bd63f01d81053aeb69d5423d62c349d077426d45eddb0acad486
+    home: https://www.elastic.co/products/beats/filebeat
+    maintainers:
+    - name: OpenStack-Helm Authors
+    name: elastic-filebeat
+    sources:
+    - https://github.com/elastic/beats/tree/master/filebeat
+    - https://opendev.org/openstack/openstack-helm
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/elastic-filebeat-2025.1.0/elastic-filebeat-2025.1.0.tgz
+    version: 2025.1.0
+  elastic-metricbeat:
+  - apiVersion: v2
+    appVersion: v7.1.0
+    created: "2025-09-23T17:09:40.007123818Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../helm-toolkit/
+      version: '>= 0.1.0'
+    description: OpenStack-Helm Elastic Metricbeat
+    digest: 1901e0addce7cdcbfb166eeada7da65e0eb36f8259dec98e4aa15afb6ec8cd61
+    home: https://www.elastic.co/products/beats/metricbeat
+    maintainers:
+    - name: OpenStack-Helm Authors
+    name: elastic-metricbeat
+    sources:
+    - https://github.com/elastic/beats/tree/master/metricbeat
+    - https://opendev.org/openstack/openstack-helm
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/elastic-metricbeat-2025.1.0/elastic-metricbeat-2025.1.0.tgz
+    version: 2025.1.0
+  elastic-packetbeat:
+  - apiVersion: v2
+    appVersion: v7.1.0
+    created: "2025-09-23T17:09:40.207881233Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../helm-toolkit/
+      version: '>= 0.1.0'
+    description: OpenStack-Helm Elastic Packetbeat
+    digest: 4d854e8447577027d212c31df87ef0df2821bf32920136c1a57a3ceb544f64f4
+    home: https://www.elastic.co/products/beats/packetbeat
+    maintainers:
+    - name: OpenStack-Helm Authors
+    name: elastic-packetbeat
+    sources:
+    - https://github.com/elastic/beats/tree/master/packetbeat
+    - https://opendev.org/openstack/openstack-helm
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/elastic-packetbeat-2025.1.0/elastic-packetbeat-2025.1.0.tgz
+    version: 2025.1.0
+  elasticsearch:
+  - apiVersion: v2
+    appVersion: v8.18.1
+    created: "2025-09-23T17:09:40.414715176Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../helm-toolkit
+      version: '>= 0.1.0'
+    description: OpenStack-Helm ElasticSearch
+    digest: 126ecbe5ca27e2ac205cdebebb987598019561d07f87309fd4294ea5fc666283
+    home: https://www.elastic.co/
+    maintainers:
+    - name: OpenStack-Helm Authors
+    name: elasticsearch
+    sources:
+    - https://github.com/elastic/elasticsearch
+    - https://opendev.org/openstack/openstack-helm-addons
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/elasticsearch-2025.1.0/elasticsearch-2025.1.0.tgz
+    version: 2025.1.0
+  etcd:
+  - apiVersion: v2
+    appVersion: v3.4.3
+    created: "2025-09-23T17:09:40.566406519Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../helm-toolkit
+      version: '>= 0.1.0'
+    description: OpenStack-Helm etcd
+    digest: 331039ab82f2615b330d932759784669e34eb0ad7267eaec58d665b7a44e1714
+    home: https://coreos.com/etcd/
+    icon: https://raw.githubusercontent.com/CloudCoreo/etcd-cluster/master/images/icon.png
+    maintainers:
+    - name: OpenStack-Helm Authors
+    name: etcd
+    sources:
+    - https://github.com/coreos/etcd/
+    - https://opendev.org/openstack/openstack-helm
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/etcd-2025.1.0/etcd-2025.1.0.tgz
+    version: 2025.1.0
+  falco:
+  - apiVersion: v2
+    appVersion: 0.11.1
+    created: "2025-09-23T17:09:40.772934003Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../helm-toolkit
+      version: '>= 0.1.0'
+    description: Sysdig Falco
+    digest: 841f3171a44f6688e8db9bfad009af5ba167a107bb1a61d886839efd8a6738e3
+    home: https://www.sysdig.com/opensource/falco/
+    icon: https://sysdig.com/wp-content/uploads/2016/08/falco_blog_480.jpg
+    keywords:
+    - monitoring
+    - security
+    - alerting
+    - metric
+    - troubleshooting
+    - run-time
+    maintainers:
+    - name: OpenStack-Helm Authors
+    name: falco
+    sources:
+    - https://github.com/draios/falco
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/falco-2025.1.0/falco-2025.1.0.tgz
+    version: 2025.1.0
+  flannel:
+  - apiVersion: v2
+    appVersion: v0.8.0
+    created: "2025-09-23T17:09:41.011300842Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../helm-toolkit
+      version: '>= 0.1.0'
+    description: OpenStack-Helm BootStrap Flannel
+    digest: 5af73db6db0a47993f2f65a825d6041813d503845ac2fd29930adaad565bfc89
+    home: https://github.com/coreos/flannel
+    icon: https://raw.githubusercontent.com/coreos/flannel/master/logos/flannel-horizontal-color.png
+    maintainers:
+    - name: OpenStack-Helm Authors
+    name: flannel
+    sources:
+    - https://github.com/coreos/flannel
+    - https://opendev.org/openstack/openstack-helm
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/flannel-2025.1.0/flannel-2025.1.0.tgz
+    version: 2025.1.0
+  fluentbit:
+  - apiVersion: v2
+    appVersion: v0.14.2
+    created: "2025-09-23T17:09:41.255639213Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../helm-toolkit/
+      version: '>= 0.1.0'
+    description: OpenStack-Helm Fluentbit
+    digest: f91192244d1d0c7c1390aa4b371d2041afcd6540bbeeb4b77215b8e094113cfa
+    home: https://www.fluentbit.io/
+    maintainers:
+    - name: OpenStack-Helm Authors
+    name: fluentbit
+    sources:
+    - https://github.com/fluent/fluentbit
+    - https://opendev.org/openstack/openstack-helm
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/fluentbit-2025.1.0/fluentbit-2025.1.0.tgz
+    version: 2025.1.0
+  fluentd:
+  - apiVersion: v2
+    appVersion: v1.10.1
+    created: "2025-09-23T17:09:41.411030668Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../helm-toolkit/
+      version: '>= 0.1.0'
+    description: OpenStack-Helm Fluentd
+    digest: 9c10309514205f4bd49a01494b6f4d8033708d4730b6ff1cac92e8bb151aad64
+    home: https://www.fluentd.org/
+    maintainers:
+    - name: OpenStack-Helm Authors
+    name: fluentd
+    sources:
+    - https://github.com/fluent/fluentd
+    - https://opendev.org/openstack/openstack-helm
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/fluentd-2025.1.0/fluentd-2025.1.0.tgz
+    version: 2025.1.0
+  freezer:
+  - annotations:
+      helm.sh/hook-weight: "-5"
+    apiVersion: v2
+    appVersion: v1.0.0
+    created: "2025-09-23T17:09:41.646904667Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../helm-toolkit
+      version: '>= 0.1.0'
+    description: OpenStack Freezer backup and disaster recovery service
+    digest: 210950406e910d511e4153107a0ddbf3376abcc45ab1b75535f0c142c67751a0
+    home: https://docs.openstack.org/freezer/latest
+    icon: https://opendev.org/openstack/freezer/src/branch/master/freezer_logo.jpg
+    keywords:
+    - openstack
+    - backup
+    - restore
+    - helm
+    maintainers:
+    - email: openstack-helm@lists.openstack.org
+      name: OpenStack Helm Team
+    name: freezer
+    sources:
+    - https://opendev.org/openstack/freezer
+    - https://opendev.org/openstack/freezer-api
+    type: application
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/freezer-2025.1.0/freezer-2025.1.0.tgz
+    version: 2025.1.0
+  glance:
+  - apiVersion: v2
+    appVersion: v1.0.0
+    created: "2025-09-23T17:09:41.910307402Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../helm-toolkit
+      version: '>= 0.1.0'
+    description: OpenStack-Helm Glance
+    digest: 5d80166940e8cc2e98fb8178196fe564f8bf6153e2d6c0d24b8cac2b0d6508b2
+    home: https://docs.openstack.org/glance/latest/
+    icon: https://www.openstack.org/themes/openstack/images/project-mascots/Glance/OpenStack_Project_Glance_vertical.png
+    maintainers:
+    - name: OpenStack-Helm Authors
+    name: glance
+    sources:
+    - https://opendev.org/openstack/glance
+    - https://opendev.org/openstack/openstack-helm
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/glance-2025.1.0/glance-2025.1.0.tgz
+    version: 2025.1.0
+  gnocchi:
+  - apiVersion: v2
+    appVersion: v3.0.3
+    created: "2025-09-23T17:09:42.080319332Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../helm-toolkit
+      version: '>= 0.1.0'
+    description: OpenStack-Helm Gnocchi
+    digest: 07907d31ddd9230fdf077298aa7a8866885ab3d4bf82935436409589a5d29321
+    home: https://gnocchi.xyz/
+    icon: https://gnocchi.xyz/_static/gnocchi-logo.png
+    maintainers:
+    - name: OpenStack-Helm Authors
+    name: gnocchi
+    sources:
+    - https://github.com/gnocchixyz/gnocchi
+    - https://opendev.org/openstack/openstack-helm
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/gnocchi-2025.1.0/gnocchi-2025.1.0.tgz
+    version: 2025.1.0
+  grafana:
+  - apiVersion: v2
+    appVersion: v9.2.10
+    created: "2025-09-23T17:09:42.24895833Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../helm-toolkit
+      version: '>= 0.1.0'
+    description: OpenStack-Helm Grafana
+    digest: 59cd22cf1633b7c13257e9add3743327a8f000462a0a94a1b1d4db10ca7bb661
+    home: https://grafana.com/
+    maintainers:
+    - name: OpenStack-Helm Authors
+    name: grafana
+    sources:
+    - https://github.com/grafana/grafana
+    - https://opendev.org/openstack/openstack-helm-addons
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/grafana-2025.1.0/grafana-2025.1.0.tgz
+    version: 2025.1.0
+  heat:
+  - apiVersion: v2
+    appVersion: v1.0.0
+    created: "2025-09-23T17:09:42.43134573Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../helm-toolkit
+      version: '>= 0.1.0'
+    description: OpenStack-Helm Heat
+    digest: e255019d33f4edf24817a3291e33d14174b0cc61e98da634ede3b03e4a3cbbd8
+    home: https://docs.openstack.org/heat/latest/
+    icon: https://www.openstack.org/themes/openstack/images/project-mascots/Heat/OpenStack_Project_Heat_vertical.png
+    maintainers:
+    - name: OpenStack-Helm Authors
+    name: heat
+    sources:
+    - https://opendev.org/openstack/heat
+    - https://opendev.org/openstack/openstack-helm
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/heat-2025.1.0/heat-2025.1.0.tgz
+    version: 2025.1.0
+  helm-toolkit:
+  - apiVersion: v2
+    appVersion: v1.0.0
+    created: "2025-09-23T17:09:42.630910476Z"
+    description: OpenStack-Helm Helm-Toolkit
+    digest: a847ec289f67b75305ba31d164bbe64d832fbae50e51bfc2ffc5c2db9f27b6a6
+    home: https://docs.openstack.org/openstack-helm
+    icon: https://www.openstack.org/themes/openstack/images/project-mascots/OpenStack-Helm/OpenStack_Project_OpenStackHelm_vertical.png
+    maintainers:
+    - name: OpenStack-Helm Authors
+    name: helm-toolkit
+    sources:
+    - https://opendev.org/openstack/openstack-helm
+    - https://opendev.org/openstack/openstack-helm
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/helm-toolkit-2025.1.0/helm-toolkit-2025.1.0.tgz
+    version: 2025.1.0
+  horizon:
+  - apiVersion: v2
+    appVersion: v1.0.0
+    created: "2025-09-23T17:09:42.878321834Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../helm-toolkit
+      version: '>= 0.1.0'
+    description: OpenStack-Helm Horizon
+    digest: 4af787b3c64bb82b2a06e96f210e2e17113758ebccc8e2a358926f953c505f7b
+    home: https://docs.openstack.org/horizon/latest/
+    icon: https://www.openstack.org/themes/openstack/images/project-mascots/Horizon/OpenStack_Project_Horizon_vertical.png
+    maintainers:
+    - name: OpenStack-Helm Authors
+    name: horizon
+    sources:
+    - https://opendev.org/openstack/horizon
+    - https://opendev.org/openstack/openstack-helm
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/horizon-2025.1.0/horizon-2025.1.0.tgz
+    version: 2025.1.0
+  ironic:
+  - apiVersion: v2
+    appVersion: v1.0.0
+    created: "2025-09-23T17:09:43.071134585Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../helm-toolkit
+      version: '>= 0.1.0'
+    description: OpenStack-Helm Ironic
+    digest: c5debfbb57cd0e7a9485885cf208a9d6ae478458543f491db43a38c0d8bf3d90
+    home: https://docs.openstack.org/ironic/latest/
+    icon: https://www.openstack.org/themes/openstack/images/project-mascots/Ironic/OpenStack_Project_Ironic_vertical.png
+    maintainers:
+    - name: OpenStack-Helm Authors
+    name: ironic
+    sources:
+    - https://opendev.org/openstack/ironic
+    - https://opendev.org/openstack/openstack-helm
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/ironic-2025.1.0/ironic-2025.1.0.tgz
+    version: 2025.1.0
+  keystone:
+  - apiVersion: v2
+    appVersion: v1.0.0
+    created: "2025-09-23T17:09:43.292344585Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../helm-toolkit
+      version: '>= 0.1.0'
+    description: OpenStack-Helm Keystone
+    digest: 748712048b73a032724deb0b761dfd43f397727e887444aac66c89f649d5f366
+    home: https://docs.openstack.org/keystone/latest/
+    icon: https://www.openstack.org/themes/openstack/images/project-mascots/Keystone/OpenStack_Project_Keystone_vertical.png
+    maintainers:
+    - name: OpenStack-Helm Authors
+    name: keystone
+    sources:
+    - https://opendev.org/openstack/keystone
+    - https://opendev.org/openstack/openstack-helm
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/keystone-2025.1.0/keystone-2025.1.0.tgz
+    version: 2025.1.0
+  kibana:
+  - apiVersion: v2
+    appVersion: v8.18.1
+    created: "2025-09-23T17:09:43.450663039Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../helm-toolkit
+      version: '>= 0.1.0'
+    description: OpenStack-Helm Kibana
+    digest: 02fb7bc568d3eacc8741e5d053516842775825578907bceaaec0f8bfecc663da
+    home: https://www.elastic.co/products/kibana
+    maintainers:
+    - name: OpenStack-Helm Authors
+    name: kibana
+    sources:
+    - https://github.com/elastic/kibana
+    - https://opendev.org/openstack/openstack-helm
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/kibana-2025.1.0/kibana-2025.1.0.tgz
+    version: 2025.1.0
+  kube-dns:
+  - apiVersion: v2
+    appVersion: v1.14.5
+    created: "2025-09-23T17:09:43.643394079Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../helm-toolkit
+      version: '>= 0.1.0'
+    description: OpenStack-Helm Kube-DNS
+    digest: b3370fbb4b22e38371f6486278863d3a6326d49a16ecc7116a5e8317453fedac
+    home: https://github.com/coreos/flannel
+    icon: https://raw.githubusercontent.com/coreos/flannel/master/logos/flannel-horizontal-color.png
+    maintainers:
+    - name: OpenStack-Helm Authors
+    name: kube-dns
+    sources:
+    - https://github.com/coreos/flannel
+    - https://opendev.org/openstack/openstack-helm
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/kube-dns-2025.1.0/kube-dns-2025.1.0.tgz
+    version: 2025.1.0
+  kubernetes-keystone-webhook:
+  - apiVersion: v2
+    appVersion: v0.2.0
+    created: "2025-09-23T17:09:43.882796783Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../helm-toolkit
+      version: '>= 0.1.0'
+    description: OpenStack-Helm Kubernetes keystone webhook
+    digest: 5070062ab3ff814cd8c74ab8cbe0ad78bc204775dabf5bc3d620275868650afb
+    home: https://github.com/kubernetes/cloud-provider-openstack
+    maintainers:
+    - name: OpenStack-Helm Authors
+    name: kubernetes-keystone-webhook
+    sources:
+    - https://opendev.org/openstack/openstack-helm
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/kubernetes-keystone-webhook-2025.1.0/kubernetes-keystone-webhook-2025.1.0.tgz
+    version: 2025.1.0
+  kubernetes-node-problem-detector:
+  - apiVersion: v2
+    appVersion: v1.0.0
+    created: "2025-09-23T17:09:44.067067014Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../helm-toolkit
+      version: '>= 0.1.0'
+    description: OpenStack-Helm Kubernetes Node Problem Detector
+    digest: 4985e5dfddd1ea51bfbb4318ba0d2d3edd51f3630867f90a0b0894274e41d5c0
+    home: https://github.com/kubernetes/node-problem-detector
+    maintainers:
+    - name: OpenStack-Helm Authors
+    name: kubernetes-node-problem-detector
+    sources:
+    - https://github.com/kubernetes/node-problem-detector
+    - https://opendev.org/openstack/openstack-helm
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/kubernetes-node-problem-detector-2025.1.0/kubernetes-node-problem-detector-2025.1.0.tgz
+    version: 2025.1.0
+  ldap:
+  - apiVersion: v2
+    appVersion: v1.2.0
+    created: "2025-09-23T17:09:44.259664566Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../helm-toolkit
+      version: '>= 0.1.0'
+    description: OpenStack-Helm LDAP
+    digest: 8a2b205d39623fc82d545ac7408f6f5f92768ef98ea25962f5bb3ec5f2ed7d55
+    home: https://www.openldap.org/
+    maintainers:
+    - name: OpenStack-Helm Authors
+    name: ldap
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/ldap-2025.1.0/ldap-2025.1.0.tgz
+    version: 2025.1.0
+  libvirt:
+  - apiVersion: v2
+    appVersion: v1.0.0
+    created: "2025-09-23T17:09:44.473935049Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../helm-toolkit
+      version: '>= 0.1.0'
+    description: OpenStack-Helm libvirt
+    digest: bab012ba82efc0e7b06327995f3b6c4096b94778240692986968a9b4ece89d6f
+    home: https://libvirt.org
+    maintainers:
+    - name: OpenStack-Helm Authors
+    name: libvirt
+    sources:
+    - https://libvirt.org/git/?p=libvirt.git;a=summary
+    - https://opendev.org/openstack/openstack-helm
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/libvirt-2025.1.0/libvirt-2025.1.0.tgz
+    version: 2025.1.0
+  local-storage:
+  - apiVersion: v2
+    appVersion: v1.0.0
+    created: "2025-09-23T17:09:44.652572584Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../helm-toolkit
+      version: '>= 0.1.0'
+    description: OpenStack-Helm Local Storage
+    digest: b79b084db85fee9a259a47dc152f737fc935ffd6b1b1172ad5cd58b4fd06fdef
+    home: https://kubernetes.io/docs/concepts/storage/volumes/#local
+    maintainers:
+    - name: OpenStack-Helm Authors
+    name: local-storage
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/local-storage-2025.1.0/local-storage-2025.1.0.tgz
+    version: 2025.1.0
+  local-volume-provisioner:
+  - apiVersion: v2
+    appVersion: v1.0.0
+    created: "2025-09-23T17:09:44.843984501Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../helm-toolkit
+      version: '>= 0.1.0'
+    description: OpenStack-Helm local-volume-provisioner
+    digest: 9fc1bd32cfa2a2632f7718eae1a5e59c0d254088948ee5adc61d83d5bb555f0a
+    home: https://github.com/kubernetes-sigs/sig-storage-local-static-provisioner
+    maintainers:
+    - name: OpenStack-Helm Authors
+    name: local-volume-provisioner
+    sources:
+    - https://opendev.org/openstack/openstack-helm
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/local-volume-provisioner-2025.1.0/local-volume-provisioner-2025.1.0.tgz
+    version: 2025.1.0
+  lockdown:
+  - apiVersion: v2
+    appVersion: "1.0"
+    created: "2025-09-23T17:09:45.071458322Z"
+    description: 'A helm chart used to lockdown all ingress and egress for a namespace '
+    digest: f8fafb30aa8e13c095acadae21a2306ad71c45c6afec03bf8d83142ff90f84f4
+    home: https://kubernetes.io/docs/concepts/services-networking/network-policies/
+    name: lockdown
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/lockdown-2025.1.0/lockdown-2025.1.0.tgz
+    version: 2025.1.0
+  magnum:
+  - apiVersion: v2
+    appVersion: v1.0.0
+    created: "2025-09-23T17:09:45.266800858Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../helm-toolkit
+      version: '>= 0.1.0'
+    description: OpenStack-Helm Magnum
+    digest: bf5cd5de640610d4050c0662a0e31e69cb4e317ccfb4ae2b1852f208125f1337
+    home: https://docs.openstack.org/magnum/latest/
+    icon: https://www.openstack.org/themes/openstack/images/project-mascots/Magnum/OpenStack_Project_Magnum_vertical.png
+    maintainers:
+    - name: OpenStack-Helm Authors
+    name: magnum
+    sources:
+    - https://opendev.org/openstack/magnum
+    - https://opendev.org/openstack/openstack-helm
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/magnum-2025.1.0/magnum-2025.1.0.tgz
+    version: 2025.1.0
+  manila:
+  - apiVersion: v2
+    appVersion: v1.0.0
+    created: "2025-09-23T17:09:45.433644479Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../helm-toolkit
+      version: '>= 0.1.0'
+    description: OpenStack-Helm Manila
+    digest: a275e103492239cf5269e2e7d92e7584be2e7ea4261c3f82e161736e03230e14
+    home: https://docs.openstack.org/manila/latest/
+    icon: https://www.openstack.org/themes/openstack/images/project-mascots/Manila/OpenStack_Project_Manila_vertical.png
+    maintainers:
+    - name: OpenStack-Helm Authors
+    name: manila
+    sources:
+    - https://opendev.org/openstack/manila
+    - https://opendev.org/openstack/openstack-helm
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/manila-2025.1.0/manila-2025.1.0.tgz
+    version: 2025.1.0
+  mariadb:
+  - apiVersion: v2
+    appVersion: v10.6.7
+    created: "2025-09-23T17:09:45.615849435Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../helm-toolkit
+      version: '>= 0.1.0'
+    description: OpenStack-Helm MariaDB
+    digest: 8cd362cdba0fcb5b04aa9518957f1c7e6219ae2a72388d0407a0854295e61bf8
+    home: https://mariadb.com/kb/en/
+    icon: http://badges.mariadb.org/mariadb-badge-180x60.png
+    maintainers:
+    - name: OpenStack-Helm Authors
+    name: mariadb
+    sources:
+    - https://github.com/MariaDB/server
+    - https://opendev.org/openstack/openstack-helm
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/mariadb-2025.1.0/mariadb-2025.1.0.tgz
+    version: 2025.1.0
+  mariadb-backup:
+  - apiVersion: v2
+    appVersion: v10.6.14
+    created: "2025-09-23T17:09:45.834807005Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../helm-toolkit
+      version: '>= 0.1.0'
+    description: OpenStack-Helm MariaDB backups
+    digest: 5d7d6fae097321ff504987909e420b076720f729159eb2cb890b4feda4dd8f6e
+    home: https://mariadb.com/kb/en/
+    icon: http://badges.mariadb.org/mariadb-badge-180x60.png
+    maintainers:
+    - name: OpenStack-Helm Authors
+    name: mariadb-backup
+    sources:
+    - https://github.com/MariaDB/server
+    - https://opendev.org/openstack/openstack-helm
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/mariadb-backup-2025.1.0/mariadb-backup-2025.1.0.tgz
+    version: 2025.1.0
+  mariadb-cluster:
+  - apiVersion: v2
+    appVersion: v10.6.14
+    created: "2025-09-23T17:09:45.988047272Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../helm-toolkit
+      version: '>= 0.1.0'
+    description: OpenStack-Helm MariaDB controlled by mariadb-operator
+    digest: 73e64cc09155b1e2dd79034801a66d21ea16abb5317d10bc9c3578e9d04e2169
+    home: https://mariadb.com/kb/en/
+    icon: http://badges.mariadb.org/mariadb-badge-180x60.png
+    maintainers:
+    - name: OpenStack-Helm Authors
+    name: mariadb-cluster
+    sources:
+    - https://github.com/MariaDB/server
+    - https://github.com/mariadb-operator/mariadb-operator
+    - https://opendev.org/openstack/openstack-helm
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/mariadb-cluster-2025.1.0/mariadb-cluster-2025.1.0.tgz
+    version: 2025.1.0
+  masakari:
+  - apiVersion: v2
+    appVersion: v1.0.0
+    created: "2025-09-23T17:09:46.149379433Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../helm-toolkit
+      version: '>= 0.1.0'
+    description: OpenStack-Helm Masakari
+    digest: 0c14b5fb730386b9d2d63e468f5cd4f18b92a01c15250b01114a271f20e4ce4d
+    home: https://docs.openstack.org/developer/masakari
+    icon: https://www.openstack.org/themes/openstack/images/project-mascots/Masakari/OpenStack_Project_masakari_vertical.png
+    maintainers:
+    - name: OpenStack-Helm Authors
+    name: masakari
+    sources:
+    - https://opendev.org/openstack/masakari
+    - https://opendev.org/openstack/masakari-monitors
+    - https://opendev.org/openstack/openstack-helm
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/masakari-2025.1.0/masakari-2025.1.0.tgz
+    version: 2025.1.0
+  memcached:
+  - apiVersion: v2
+    appVersion: v1.5.5
+    created: "2025-09-23T17:09:46.389278585Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../helm-toolkit
+      version: '>= 0.1.0'
+    description: OpenStack-Helm Memcached
+    digest: 77b4c5e3c4f7bcf34da5c1160f182f4b9aec11ccf93f82d7f70e469d686e287a
+    home: https://github.com/memcached/memcached
+    name: memcached
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/memcached-2025.1.0/memcached-2025.1.0.tgz
+    version: 2025.1.0
+  metacontroller:
+  - apiVersion: v2
+    appVersion: v0.4.2
+    created: "2025-09-23T17:09:46.629617318Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../helm-toolkit
+      version: '>= 0.1.0'
+    description: A Helm chart for Metacontroller
+    digest: be3465759c08948dfdec213e745637b2fa4ac69c1bb1d13dad99251ad8f33b4c
+    home: https://metacontroller.app/
+    keywords:
+    - CRDs
+    - metacontroller
+    maintainers:
+    - name: OpenStack-Helm Authors
+    name: metacontroller
+    sources:
+    - https://github.com/GoogleCloudPlatform/metacontroller
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/metacontroller-2025.1.0/metacontroller-2025.1.0.tgz
+    version: 2025.1.0
+  mistral:
+  - apiVersion: v2
+    appVersion: v1.0.0
+    created: "2025-09-23T17:09:46.886857672Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../helm-toolkit
+      version: '>= 0.1.0'
+    description: OpenStack-Helm Mistral
+    digest: fdba58c7437a2b6b31ed24ddbb4d08176b8006f2db332867444fe539f991e617
+    home: https://docs.openstack.org/mistral/latest/
+    icon: https://www.openstack.org/themes/openstack/images/project-mascots/Mistral/OpenStack_Project_Mistral_vertical.png
+    maintainers:
+    - name: OpenStack-Helm Authors
+    name: mistral
+    sources:
+    - https://opendev.org/openstack/mistral
+    - https://opendev.org/openstack/openstack-helm
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/mistral-2025.1.0/mistral-2025.1.0.tgz
+    version: 2025.1.0
+  monasca:
+  - apiVersion: v2
+    appVersion: v1.0.0
+    created: "2025-09-23T17:09:47.09580812Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../helm-toolkit
+      version: '>= 0.1.0'
+    description: OpenStack-Helm Monasca API
+    digest: 19736db6885cfbcc2ae910ac7967cb76017a65db2f39a9939ee252ee136d1013
+    home: https://docs.openstack.org/monasca/latest/
+    icon: https://www.openstack.org/themes/openstack/images/project-mascots/Monasca/OpenStack_Project_Monasca_vertical.png
+    maintainers:
+    - name: OpenStack-Helm Authors
+    name: monasca
+    sources:
+    - https://opendev.org/openstack/monasca
+    - https://opendev.org/openstack/openstack-helm
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/monasca-2025.1.0/monasca-2025.1.0.tgz
+    version: 2025.1.0
+  mongodb:
+  - apiVersion: v2
+    appVersion: v3.4.9
+    created: "2025-09-23T17:09:47.276419983Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../helm-toolkit
+      version: '>= 0.1.0'
+    description: OpenStack-Helm MongoDB
+    digest: 825739758932dde20cd2881317d7a620f6959a84d95bb5ceec9380b948bdf5c0
+    home: https://www.mongodb.com
+    maintainers:
+    - name: OpenStack-Helm Authors
+    name: mongodb
+    sources:
+    - https://github.com/mongodb/mongo
+    - https://opendev.org/openstack/openstack-helm
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/mongodb-2025.1.0/mongodb-2025.1.0.tgz
+    version: 2025.1.0
+  nagios:
+  - apiVersion: v2
+    appVersion: v1.0.0
+    created: "2025-09-23T17:09:47.442094113Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../helm-toolkit
+      version: '>= 0.1.0'
+    description: OpenStack-Helm Nagios
+    digest: da4aea3b63b813a7fd08aab81f5aebfcac60ae048c2c863d906649e4529c7b57
+    home: https://www.nagios.org
+    maintainers:
+    - name: OpenStack-Helm Authors
+    name: nagios
+    sources:
+    - https://opendev.org/openstack/openstack-helm-addons
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/nagios-2025.1.0/nagios-2025.1.0.tgz
+    version: 2025.1.0
+  namespace-config:
+  - apiVersion: v2
+    appVersion: v1.0.0
+    created: "2025-09-23T17:09:47.601708907Z"
+    description: OpenStack-Helm Namespace Config
+    digest: 4541f5b8f4a20a79c64ae99d9ca1d5e5b9485ffdfc38dfb786d7820a5b90556b
+    home: https://kubernetes.io/docs/concepts/policy/limit-range/
+    name: namespace-config
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/namespace-config-2025.1.0/namespace-config-2025.1.0.tgz
+    version: 2025.1.0
+  neutron:
+  - apiVersion: v2
+    appVersion: v1.0.0
+    created: "2025-09-23T17:09:47.854612199Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../helm-toolkit
+      version: '>= 0.1.0'
+    description: OpenStack-Helm Neutron
+    digest: 479ba298def27545c1fa95bd820a29816635621ea8ab7dfdbfd0bd6f965d75a8
+    home: https://docs.openstack.org/neutron/latest/
+    icon: https://www.openstack.org/themes/openstack/images/project-mascots/Neutron/OpenStack_Project_Neutron_vertical.png
+    maintainers:
+    - name: OpenStack-Helm Authors
+    name: neutron
+    sources:
+    - https://opendev.org/openstack/neutron
+    - https://opendev.org/openstack/openstack-helm
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/neutron-2025.1.0/neutron-2025.1.0.tgz
+    version: 2025.1.0
+  nfs-provisioner:
+  - apiVersion: v2
+    appVersion: v2.2.1
+    created: "2025-09-23T17:09:48.007033112Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../helm-toolkit
+      version: '>= 0.1.0'
+    description: OpenStack-Helm NFS
+    digest: cdc05643a2f348211ea30507facb31ad59a3161986c12175aae885e9a72c6e61
+    home: https://github.com/kubernetes-incubator/external-storage
+    maintainers:
+    - name: OpenStack-Helm Authors
+    name: nfs-provisioner
+    sources:
+    - https://github.com/kubernetes-incubator/external-storage
+    - https://opendev.org/openstack/openstack-helm
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/nfs-provisioner-2025.1.0/nfs-provisioner-2025.1.0.tgz
+    version: 2025.1.0
+  nova:
+  - apiVersion: v2
+    appVersion: v1.0.0
+    created: "2025-09-23T17:09:48.205369575Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../helm-toolkit
+      version: '>= 0.1.0'
+    description: OpenStack-Helm Nova
+    digest: 0b452087aac549d6b87fd1ebe25dd28a7f0b0227b8d192718b72a07e513ae36d
+    home: https://docs.openstack.org/nova/latest/
+    icon: https://www.openstack.org/themes/openstack/images/project-mascots/Nova/OpenStack_Project_Nova_vertical.png
+    maintainers:
+    - name: OpenStack-Helm Authors
+    name: nova
+    sources:
+    - https://opendev.org/openstack/nova
+    - https://opendev.org/openstack/openstack-helm
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/nova-2025.1.0/nova-2025.1.0.tgz
+    version: 2025.1.0
+  octavia:
+  - apiVersion: v2
+    appVersion: v1.0.0
+    created: "2025-09-23T17:09:48.38212377Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../helm-toolkit
+      version: '>= 0.1.0'
+    description: OpenStack-Helm Octavia
+    digest: a9e6a38c46d63b1f0146db830f4a19a9f887d6d63814f3b93c9114d182beac7c
+    home: https://docs.openstack.org/octavia/latest/
+    icon: https://www.openstack.org/themes/openstack/images/project-mascots/Octavia/OpenStack_Project_Octavia_vertical.png
+    maintainers:
+    - name: OpenStack-Helm Authors
+    name: octavia
+    sources:
+    - https://opendev.org/openstack/octavia
+    - https://opendev.org/openstack/openstack-helm
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/octavia-2025.1.0/octavia-2025.1.0.tgz
+    version: 2025.1.0
+  openstack:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2025-09-23T17:09:48.759057067Z"
+    dependencies:
+    - condition: helm-toolkit.enabled
+      name: helm-toolkit
+      repository: file://../helm-toolkit
+      version: '>0.1.0'
+    - condition: mariadb.enabled
+      name: mariadb
+      repository: file://../mariadb
+      version: '>0.1.0'
+    - condition: rabbitmq.enabled
+      name: rabbitmq
+      repository: file://../rabbitmq
+      version: '>0.1.0'
+    - condition: memcached.enabled
+      name: memcached
+      repository: file://../memcached
+      version: '>0.1.0'
+    - condition: keystone.enabled
+      name: keystone
+      repository: file://../keystone
+      version: '>0.1.0'
+    - condition: heat.enabled
+      name: heat
+      repository: file://../heat
+      version: '>0.1.0'
+    - condition: glance.enabled
+      name: glance
+      repository: file://../glance
+      version: '>0.1.0'
+    - condition: openvswitch.enabled
+      name: openvswitch
+      repository: file://../openvswitch
+      version: '>0.1.0'
+    - condition: libvirt.enabled
+      name: libvirt
+      repository: file://../libvirt
+      version: '>0.1.0'
+    - condition: nova.enabled
+      name: nova
+      repository: file://../nova
+      version: '>0.1.0'
+    - condition: placement.enabled
+      name: placement
+      repository: file://../placement
+      version: '>0.1.0'
+    - condition: neutron.enabled
+      name: neutron
+      repository: file://../neutron
+      version: '>0.1.0'
+    - condition: horizon.enabled
+      name: horizon
+      repository: file://../horizon
+      version: '>0.1.0'
+    description: A chart for openstack helm commmon deployment items
+    digest: 07830656641c15dad01be967e91918dbf9fa8f5f3cb7d0e6a350f985e9db4274
+    maintainers:
+    - name: OpenStack-Helm Authors
+    name: openstack
+    type: application
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/openstack-2025.1.0/openstack-2025.1.0.tgz
+    version: 2025.1.0
+  openvswitch:
+  - apiVersion: v2
+    appVersion: v1.0.0
+    created: "2025-09-23T17:09:48.894044276Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../helm-toolkit
+      version: '>= 0.1.0'
+    description: OpenStack-Helm OpenVSwitch
+    digest: 12be6f1c082c2398a34edf98ceaa4557464ed3fc54f42452d337a736508b8931
+    home: http://openvswitch.org
+    icon: https://www.openstack.org/themes/openstack/images/project-mascots/Neutron/OpenStack_Project_Neutron_vertical.png
+    maintainers:
+    - name: OpenStack-Helm Authors
+    name: openvswitch
+    sources:
+    - https://github.com/openvswitch/ovs
+    - https://opendev.org/openstack/openstack-helm
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/openvswitch-2025.1.0/openvswitch-2025.1.0.tgz
+    version: 2025.1.0
+  ovn:
+  - apiVersion: v2
+    appVersion: v23.3.0
+    created: "2025-09-23T17:09:49.091478534Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../helm-toolkit
+      version: '>= 0.1.0'
+    description: OpenStack-Helm OVN
+    digest: 683f691562abf3972c275230f191b9b75972b0648f8303476f21e30ac4ff465d
+    home: https://www.ovn.org
+    icon: https://www.ovn.org/images/ovn-logo.png
+    maintainers:
+    - name: OpenStack-Helm Authors
+    name: ovn
+    sources:
+    - https://github.com/ovn-org/ovn
+    - https://opendev.org/openstack/openstack-helm
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/ovn-2025.1.0/ovn-2025.1.0.tgz
+    version: 2025.1.0
+  placement:
+  - apiVersion: v2
+    appVersion: v1.0.0
+    created: "2025-09-23T17:09:49.276525068Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../helm-toolkit
+      version: '>= 0.1.0'
+    description: OpenStack-Helm Placement
+    digest: f42abfff51eb7a49f164057331cc01da07aa2faecaa727c22d23f7899becbdd6
+    home: https://docs.openstack.org/placement/latest/
+    icon: https://www.openstack.org/themes/openstack/images/project-mascots/Placement/OpenStack_Project_Placement_vertical.png
+    maintainers:
+    - name: OpenStack-Helm Authors
+    name: placement
+    sources:
+    - https://opendev.org/openstack/placement
+    - https://opendev.org/openstack/openstack-helm
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/placement-2025.1.0/placement-2025.1.0.tgz
+    version: 2025.1.0
+  postgresql:
+  - apiVersion: v2
+    appVersion: v14.5
+    created: "2025-09-23T17:09:49.428133536Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../helm-toolkit
+      version: '>= 0.1.0'
+    description: OpenStack-Helm PostgreSQL
+    digest: 10054029358e86e100dbc748955642708a98921366a31ea65bb31715302bc176
+    home: https://www.postgresql.org
+    maintainers:
+    - name: OpenStack-Helm Authors
+    name: postgresql
+    sources:
+    - https://github.com/postgres/postgres
+    - https://opendev.org/openstack/openstack-helm
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/postgresql-2025.1.0/postgresql-2025.1.0.tgz
+    version: 2025.1.0
+  powerdns:
+  - apiVersion: v2
+    appVersion: v4.1.10
+    created: "2025-09-23T17:09:49.578267532Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../helm-toolkit
+      version: '>= 0.1.0'
+    description: OpenStack-Helm PowerDNS
+    digest: 1b51a38c991e5947bb8eeaef4dc8a8384d7f288064df4fafcacdca9f58d034f0
+    home: https://www.powerdns.com/
+    maintainers:
+    - name: OpenStack-Helm Authors
+    name: powerdns
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/powerdns-2025.1.0/powerdns-2025.1.0.tgz
+    version: 2025.1.0
+  prometheus:
+  - apiVersion: v2
+    appVersion: v2.25.0
+    created: "2025-09-23T17:09:49.740872467Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../helm-toolkit
+      version: '>= 0.1.0'
+    description: OpenStack-Helm Prometheus
+    digest: 50648598d417eecbd9a78b1af3e73024739e21d71004017bc5a2ff9686451d36
+    home: https://prometheus.io/
+    maintainers:
+    - name: OpenStack-Helm Authors
+    name: prometheus
+    sources:
+    - https://github.com/prometheus/prometheus
+    - https://opendev.org/openstack/openstack-helm
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/prometheus-2025.1.0/prometheus-2025.1.0.tgz
+    version: 2025.1.0
+  prometheus-alertmanager:
+  - apiVersion: v2
+    appVersion: v0.20.0
+    created: "2025-09-23T17:09:49.910865165Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../helm-toolkit
+      version: '>= 0.1.0'
+    description: OpenStack-Helm Alertmanager for Prometheus
+    digest: 9b99a8ab16cf2f22366dd78b0a35bab592e2bb62d4f765e7f8e6da1fb3e5db58
+    home: https://prometheus.io/docs/alerting/alertmanager/
+    maintainers:
+    - name: OpenStack-Helm Authors
+    name: prometheus-alertmanager
+    sources:
+    - https://github.com/prometheus/alertmanager
+    - https://opendev.org/openstack/openstack-helm
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/prometheus-alertmanager-2025.1.0/prometheus-alertmanager-2025.1.0.tgz
+    version: 2025.1.0
+  prometheus-blackbox-exporter:
+  - apiVersion: v2
+    appVersion: v0.16.0
+    created: "2025-09-23T17:09:50.095585902Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../helm-toolkit
+      version: '>= 0.1.0'
+    description: OpenStack-Helm blackbox exporter for Prometheus
+    digest: 29bbae5593f9fb219af1756f50443f3222e855a515a9add5ac69491b61edc5a0
+    home: https://github.com/prometheus/blackbox_exporter
+    maintainers:
+    - name: OpenStack-Helm Authors
+    name: prometheus-blackbox-exporter
+    sources:
+    - https://opendev.org/openstack/openstack-helm
+    - https://github.com/prometheus/blackbox_exporter
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/prometheus-blackbox-exporter-2025.1.0/prometheus-blackbox-exporter-2025.1.0.tgz
+    version: 2025.1.0
+  prometheus-kube-state-metrics:
+  - apiVersion: v2
+    appVersion: v1.3.1
+    created: "2025-09-23T17:09:50.281558674Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../helm-toolkit
+      version: '>= 0.1.0'
+    description: OpenStack-Helm Kube-State-Metrics for Prometheus
+    digest: 71a69396b6927968cef893eac163760e6cf7c4018691e8d613a81ce7c85b08fd
+    home: https://github.com/kubernetes/kube-state-metrics
+    maintainers:
+    - name: OpenStack-Helm Authors
+    name: prometheus-kube-state-metrics
+    sources:
+    - https://github.com/kubernetes/kube-state-metrics
+    - https://opendev.org/openstack/openstack-helm
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/prometheus-kube-state-metrics-2025.1.0/prometheus-kube-state-metrics-2025.1.0.tgz
+    version: 2025.1.0
+  prometheus-mysql-exporter:
+  - apiVersion: v2
+    appVersion: v0.12.1
+    created: "2025-09-23T17:09:50.53756396Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../helm-toolkit
+      version: '>= 0.1.0'
+    description: OpenStack-Helm Prometheus mysql-exporter
+    digest: e80e2e605480fa185c24df915ff1787c7ee7129f34163266092bc960556b6863
+    home: https://mariadb.com/kb/en/
+    icon: http://badges.mariadb.org/mariadb-badge-180x60.png
+    maintainers:
+    - name: OpenStack-Helm Authors
+    name: prometheus-mysql-exporter
+    sources:
+    - https://github.com/MariaDB/server
+    - https://opendev.org/openstack/openstack-helm
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/prometheus-mysql-exporter-2025.1.0/prometheus-mysql-exporter-2025.1.0.tgz
+    version: 2025.1.0
+  prometheus-node-exporter:
+  - apiVersion: v2
+    appVersion: v0.18.1
+    created: "2025-09-23T17:09:50.691895756Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../helm-toolkit
+      version: '>= 0.1.0'
+    description: OpenStack-Helm Node Exporter for Prometheus
+    digest: 024284da8a52c59e59aaf9b18c0eef583589812810f1b396787e8d997a245de7
+    home: https://github.com/prometheus/node_exporter
+    maintainers:
+    - name: OpenStack-Helm Authors
+    name: prometheus-node-exporter
+    sources:
+    - https://github.com/prometheus/node_exporter
+    - https://opendev.org/openstack/openstack-helm
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/prometheus-node-exporter-2025.1.0/prometheus-node-exporter-2025.1.0.tgz
+    version: 2025.1.0
+  prometheus-openstack-exporter:
+  - apiVersion: v2
+    appVersion: v1.0.0
+    created: "2025-09-23T17:09:50.874264695Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../helm-toolkit
+      version: '>= 0.1.0'
+    description: OpenStack Metrics Exporter for Prometheus
+    digest: 660d53eb384bcf694534da5926810dca6be4471394d2d0f3f96365a689bb3035
+    home: https://opendev.org/openstack/openstack-helm
+    maintainers:
+    - name: OpenStack-Helm Authors
+    name: prometheus-openstack-exporter
+    sources:
+    - https://opendev.org/openstack/openstack-helm
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/prometheus-openstack-exporter-2025.1.0/prometheus-openstack-exporter-2025.1.0.tgz
+    version: 2025.1.0
+  prometheus-process-exporter:
+  - apiVersion: v2
+    appVersion: v0.2.11
+    created: "2025-09-23T17:09:51.126789754Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../helm-toolkit
+      version: '>= 0.1.0'
+    description: OpenStack-Helm Process Exporter for Prometheus
+    digest: 9b19711fc556d2eda81d03a4e378b15a415f6f33087e9a6b7eb36409e308719b
+    home: https://opendev.org/openstack/openstack-helm
+    maintainers:
+    - name: OpenStack-Helm Authors
+    name: prometheus-process-exporter
+    sources:
+    - https://github.com/ncabatoff/process-exporter
+    - https://opendev.org/openstack/openstack-helm
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/prometheus-process-exporter-2025.1.0/prometheus-process-exporter-2025.1.0.tgz
+    version: 2025.1.0
+  rabbitmq:
+  - apiVersion: v2
+    appVersion: v3.12.0
+    created: "2025-09-23T17:09:51.321567414Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../helm-toolkit
+      version: '>= 0.1.0'
+    description: OpenStack-Helm RabbitMQ
+    digest: 560b225fd8eb2accf70ab94ab6aa3093ca32f2d4e6c7936dbf8945150e1aace0
+    home: https://github.com/rabbitmq/rabbitmq-server
+    name: rabbitmq
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/rabbitmq-2025.1.0/rabbitmq-2025.1.0.tgz
+    version: 2025.1.0
+  rally:
+  - apiVersion: v2
+    appVersion: v1.0.0
+    created: "2025-09-23T17:09:51.53232407Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../helm-toolkit
+      version: '>= 0.1.0'
+    description: OpenStack-Helm rally
+    digest: 571fe44edf44a5c9c8c020701f2d9104c512a64bc8d967993d69092e031b7716
+    home: https://docs.openstack.org/developer/rally
+    icon: https://www.openstack.org/themes/openstack/images/project-mascots/rally/OpenStack_Project_rally_vertical.png
+    maintainers:
+    - name: OpenStack-Helm Authors
+    name: rally
+    sources:
+    - https://opendev.org/openstack/rally
+    - https://opendev.org/openstack/openstack-helm
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/rally-2025.1.0/rally-2025.1.0.tgz
+    version: 2025.1.0
+  redis:
+  - apiVersion: v2
+    appVersion: v4.0.1
+    created: "2025-09-23T17:09:51.704423201Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../helm-toolkit
+      version: '>= 0.1.0'
+    description: OpenStack-Helm Redis
+    digest: c4227075cc0ff19a08ca03215eacff083b4b0ba8069fa7216ec1071b378b6142
+    home: https://github.com/redis/redis
+    name: redis
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/redis-2025.1.0/redis-2025.1.0.tgz
+    version: 2025.1.0
+  registry:
+  - apiVersion: v2
+    appVersion: v2.0.0
+    created: "2025-09-23T17:09:51.870736745Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../helm-toolkit
+      version: '>= 0.1.0'
+    description: OpenStack-Helm Docker Registry
+    digest: 7cf23e9a82309f60e8c32944e435301d3f27e9846c006ff2952656a05be5b2b0
+    home: https://github.com/kubernetes/ingress
+    maintainers:
+    - name: OpenStack-Helm Authors
+    name: registry
+    sources:
+    - https://opendev.org/openstack/openstack-helm
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/registry-2025.1.0/registry-2025.1.0.tgz
+    version: 2025.1.0
+  shaker:
+  - apiVersion: v2
+    appVersion: v1.0.0
+    created: "2025-09-23T17:09:52.025998177Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../helm-toolkit
+      version: '>= 0.1.0'
+    description: OpenStack-Helm Shaker
+    digest: bff473eba0570602ab9744df3126353ab0866b8522a903d166813feca9f54442
+    home: https://pyshaker.readthedocs.io/en/latest/index.html
+    icon: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlnnEExfz6H9bBFFDxsDm5mVTdKWOt6Hw2_3aJ7hVkNdDdTCrimQ
+    maintainers:
+    - name: OpenStack-Helm Authors
+    name: shaker
+    sources:
+    - https://opendev.org/openstack/shaker
+    - https://opendev.org/openstack/openstack-helm
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/shaker-2025.1.0/shaker-2025.1.0.tgz
+    version: 2025.1.0
+  skyline:
+  - apiVersion: v2
+    appVersion: v1.0.0
+    created: "2025-09-23T17:09:52.212574307Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../helm-toolkit
+      version: '>= 0.1.0'
+    description: OpenStack-Helm Skyline
+    digest: b87fa38badf8dbaa4dd148dc2d746933aa527138fbb93d60f58cbc55190b0d9a
+    home: https://docs.openstack.org/skyline-apiserver/latest/
+    maintainers:
+    - name: OpenStack-Helm Authors
+    name: skyline
+    sources:
+    - https://opendev.org/openstack/skyline-apiserver
+    - https://opendev.org/openstack/skyline-console
+    - https://opendev.org/openstack/openstack-helm
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/skyline-2025.1.0/skyline-2025.1.0.tgz
+    version: 2025.1.0
+  tacker:
+  - apiVersion: v2
+    appVersion: v1.0.0
+    created: "2025-09-23T17:09:52.366413335Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../helm-toolkit
+      version: '>= 0.1.0'
+    description: OpenStack-Helm Tacker
+    digest: 862b6e02c77b865f52469612969f1a1bbd50a16de21cd81aadb306f9caba0697
+    home: https://docs.openstack.org/tacker/latest/
+    icon: https://www.openstack.org/themes/openstack/images/project-mascots/Tacker/OpenStack_Project_Tacker_vertical.png
+    maintainers:
+    - name: OpenStack-Helm Authors
+    name: tacker
+    sources:
+    - https://opendev.org/openstack/tacker
+    - https://opendev.org/openstack/openstack-helm
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/tacker-2025.1.0/tacker-2025.1.0.tgz
+    version: 2025.1.0
+  tempest:
+  - apiVersion: v2
+    appVersion: v1.0.0
+    created: "2025-09-23T17:09:52.524552403Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../helm-toolkit
+      version: '>= 0.1.0'
+    description: OpenStack-Helm Tempest
+    digest: 5a97d6e1da9b4c6999b1756fff403ff6b1c47d954f5e4cddd04569e9c9d5c124
+    home: https://docs.openstack.org/tempest/latest/
+    icon: https://www.openstack.org/themes/openstack/images/project-mascots/tempest/OpenStack_Project_tempest_vertical.png
+    maintainers:
+    - name: OpenStack-Helm Authors
+    name: tempest
+    sources:
+    - https://opendev.org/openstack/tempest
+    - https://opendev.org/openstack/openstack-helm
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/tempest-2025.1.0/tempest-2025.1.0.tgz
+    version: 2025.1.0
+  watcher:
+  - apiVersion: v2
+    appVersion: v1.0.0
+    created: "2025-09-23T17:09:52.744114466Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../helm-toolkit
+      version: '>= 0.1.0'
+    description: OpenStack-Helm Watcher
+    digest: a3c41529dfa5376a28cd43465eaa681ddaaed6bb8af3139821080a5989b13f62
+    home: https://docs.openstack.org/watcher/latest/
+    icon: https://www.openstack.org/themes/openstack/images/project-mascots/Watcher/OpenStack_Project_Watcher_vertical.png
+    maintainers:
+    - name: OpenStack-Helm Authors
+    name: watcher
+    sources:
+    - https://opendev.org/openstack/watcher
+    - https://opendev.org/openstack/openstack-helm
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/watcher-2025.1.0/watcher-2025.1.0.tgz
+    version: 2025.1.0
+  zaqar:
+  - apiVersion: v2
+    appVersion: v1.0.0
+    created: "2025-09-23T17:09:52.918784435Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../helm-toolkit
+      version: '>= 0.1.0'
+    description: OpenStack Messaging Service (Zaqar)
+    digest: 93f4bfe1550b8545749b52b6f1f105aa9bf1dda78b57ce6b4357839243524bbc
+    home: https://docs.openstack.org/zaqar/
+    icon: https://www.openstack.org/themes/openstack/images/project-mascots/Zaqar/OpenStack_Project_Zaqar_vertical.png
+    keywords:
+    - openstack
+    - messaging
+    - queue
+    - helm
+    maintainers:
+    - email: openstack-helm@lists.openstack.org
+      name: OpenStack-Helm Team
+    name: zaqar
+    sources:
+    - https://opendev.org/openstack/zaqar
+    type: application
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/zaqar-2025.1.0/zaqar-2025.1.0.tgz
+    version: 2025.1.0
+generated: "2025-09-23T17:09:52.918806757Z"
