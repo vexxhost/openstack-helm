@@ -840,6 +840,25 @@ entries:
     urls:
     - https://github.com/vexxhost/openstack-helm/releases/download/libvirt-2025.1.0/libvirt-2025.1.0.tgz
     version: 2025.1.0
+  - apiVersion: v2
+    appVersion: v1.0.0
+    created: "2025-09-23T18:48:29.333174883Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../helm-toolkit
+      version: '>= 0.1.0'
+    description: OpenStack-Helm libvirt
+    digest: 73c9ea17d17d8e26af5bbd6247b0a90a97ddc7aca73afff798192e20c459ecaf
+    home: https://libvirt.org
+    maintainers:
+    - name: OpenStack-Helm Authors
+    name: libvirt
+    sources:
+    - https://libvirt.org/git/?p=libvirt.git;a=summary
+    - https://opendev.org/openstack/openstack-helm
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/libvirt-1.1.0/libvirt-1.1.0.tgz
+    version: 1.1.0
   local-storage:
   - apiVersion: v2
     appVersion: v1.0.0
@@ -1755,4 +1774,4 @@ entries:
     urls:
     - https://github.com/vexxhost/openstack-helm/releases/download/zaqar-2025.1.0/zaqar-2025.1.0.tgz
     version: 2025.1.0
-generated: "2025-09-23T17:09:52.918806757Z"
+generated: "2025-09-23T18:48:29.333201653Z"
