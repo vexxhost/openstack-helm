@@ -115,43 +115,6 @@ spec:
               mountPath: /tmp/init-dynamic-options.sh
               subPath: init-dynamic-options.sh
               readOnly: true
-{{- if eq .Values.conf.qemu.vnc_tls "1" }}
-        - name: cert-init-vnc
-{{ tuple $envAll "kubectl" | include "helm-toolkit.snippets.image" | indent 10 }}
-{{ dict "envAll" $envAll "application" "libvirt" "container" "cert_init" | include "helm-toolkit.snippets.kubernetes_container_security_context" | indent 10 }}
-          command:
-            - /tmp/cert-init.sh
-          env:
-            - name: TYPE
-              value: vnc
-            - name: ISSUER_KIND
-              value: {{ .Values.conf.vencrypt.issuer.kind }}
-            - name: ISSUER_NAME
-              value: {{ .Values.conf.vencrypt.issuer.name }}
-            - name: POD_UID
-              valueFrom:
-                fieldRef:
-                  fieldPath: metadata.uid
-            - name: POD_NAME
-              valueFrom:
-                fieldRef:
-                  fieldPath: metadata.name
-            - name: POD_NAMESPACE
-              valueFrom:
-                fieldRef:
-                  fieldPath: metadata.namespace
-            - name: POD_IP
-              valueFrom:
-                fieldRef:
-                  fieldPath: status.podIP
-          volumeMounts:
-            - name: pod-tmp
-              mountPath: /tmp
-            - name: libvirt-bin
-              mountPath: /tmp/cert-init.sh
-              subPath: cert-init.sh
-              readOnly: true
-{{- end }}
 {{- if .Values.conf.ceph.enabled }}
         {{- if empty .Values.conf.ceph.cinder.keyring }}
         - name: ceph-admin-keyring-placement
@@ -204,6 +167,46 @@ spec:
               readOnly: true
 {{- end }}
       containers:
+        - name: tls-sidecar
+{{ tuple $envAll "libvirt_tls_sidecar" | include "helm-toolkit.snippets.image" | indent 10 }}
+{{ tuple $envAll $envAll.Values.pod.resources.libvirt_tls_sidecar | include "helm-toolkit.snippets.kubernetes_resources" | indent 10 }}
+{{ dict "envAll" $envAll "application" "libvirt" "container" "libvirt_tls_sidecar" | include "helm-toolkit.snippets.kubernetes_container_security_context" | indent 10 }}
+          env:
+            - name: API_ISSUER_KIND
+              value: {{ .Values.issuers.libvirt.kind }}
+            - name: API_ISSUER_NAME
+              value: {{ .Values.issuers.libvirt.name }}
+            - name: VNC_ISSUER_KIND
+              value: {{ .Values.issuers.vencrypt.kind }}
+            - name: VNC_ISSUER_NAME
+              value: {{ .Values.issuers.vencrypt.name }}
+            - name: POD_UID
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.uid
+            - name: POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: POD_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+            - name: POD_IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.podIP
+          volumeMounts:
+            - name: etc-pki-qemu
+              mountPath: /etc/pki/qemu
+            - name: etc-pki-ca
+              mountPath: /etc/pki/CA
+            - name: etc-pki-libvirt
+              mountPath: /etc/pki/libvirt
+            - name: etc-pki-libvirt-vnc
+              mountPath: /etc/pki/libvirt-vnc
+            - name: run-libvirt
+              mountPath: /run/libvirt
         - name: libvirt
 {{ tuple $envAll "libvirt" | include "helm-toolkit.snippets.image" | indent 10 }}
 {{ tuple $envAll $envAll.Values.pod.resources.libvirt | include "helm-toolkit.snippets.kubernetes_resources" | indent 10 }}
@@ -230,6 +233,10 @@ spec:
           command:
             - /tmp/libvirt.sh
           lifecycle:
+            postStart:
+              exec:
+                command:
+                  - /tmp/wait-for-libvirt.sh
             preStop:
               exec:
                 command:
@@ -238,15 +245,23 @@ spec:
                   - |-
                     kill $(cat /var/run/libvirtd.pid)
           volumeMounts:
-            {{ dict "enabled" $ssl_enabled "name" "ssl-client" "path" "/etc/pki/libvirt" "certs" (tuple "clientcert.pem" "clientkey.pem" ) | include "helm-toolkit.snippets.tls_volume_mount" | indent 12 }}
-            {{ dict "enabled" $ssl_enabled "name" "ssl-server-cert" "path" "/etc/pki/libvirt" "certs" (tuple "servercert.pem" ) | include "helm-toolkit.snippets.tls_volume_mount" | indent 12 }}
-            {{ dict "enabled" $ssl_enabled "name" "ssl-server-key" "path" "/etc/pki/libvirt/private" "certs" (tuple "serverkey.pem" ) | include "helm-toolkit.snippets.tls_volume_mount" | indent 12 }}
-            {{ dict "enabled" $ssl_enabled "name" "ssl-ca-cert" "path" "/etc/pki/CA" "certs" (tuple "cacert.pem" ) | include "helm-toolkit.snippets.tls_volume_mount" | indent 12 }}
+            - name: etc-pki-qemu
+              mountPath: /etc/pki/qemu
+            - name: etc-pki-ca
+              mountPath: /etc/pki/CA
+            - name: etc-pki-libvirt
+              mountPath: /etc/pki/libvirt
+            - name: etc-pki-libvirt-vnc
+              mountPath: /etc/pki/libvirt-vnc
             - name: pod-tmp
               mountPath: /tmp
             - name: libvirt-bin
               mountPath: /tmp/libvirt.sh
               subPath: libvirt.sh
+              readOnly: true
+            - name: libvirt-bin
+              mountPath: /tmp/wait-for-libvirt.sh
+              subPath: wait-for-libvirt.sh
               readOnly: true
             - name: pod-shared
               mountPath: /etc/libvirt/libvirtd.conf
@@ -329,10 +344,16 @@ spec:
               {{- end }}
         {{- end }}
       volumes:
-        {{ dict "enabled" $ssl_enabled "secretName" $envAll.Values.secrets.tls.client "name" "ssl-client" "path" "/etc/pki/libvirt" "certs" (tuple "clientcert.pem" "clientkey.pem" ) | include "helm-toolkit.snippets.tls_volume" | indent 8 }}
-        {{ dict "enabled" $ssl_enabled "secretName" $envAll.Values.secrets.tls.server "name" "ssl-server-cert" "path" "/etc/pki/libvirt" "certs" (tuple "servercert.pem" ) | include "helm-toolkit.snippets.tls_volume" | indent 8 }}
-        {{ dict "enabled" $ssl_enabled "secretName" $envAll.Values.secrets.tls.server "name" "ssl-server-key" "path" "/etc/pki/libvirt/private" "certs" (tuple "serverkey.pem" ) | include "helm-toolkit.snippets.tls_volume" | indent 8 }}
-        {{ dict "enabled" $ssl_enabled "secretName" $envAll.Values.secrets.tls.server "name" "ssl-ca-cert" "path" "/etc/pki/CA" "certs" (tuple "cacert.pem" ) | include "helm-toolkit.snippets.tls_volume" | indent 8 }}
+        - name: etc-pki-qemu
+          hostPath:
+            path: /etc/pki/qemu
+        - name: etc-pki-ca
+          emptyDir: {}
+        - name: etc-pki-libvirt
+          emptyDir: {}
+        - name: etc-pki-libvirt-vnc
+          hostPath:
+            path: /etc/pki/libvirt-vnc
         - name: pod-tmp
           emptyDir: {}
         - name: libvirt-bin
@@ -374,6 +395,9 @@ spec:
         - name: run
           hostPath:
             path: /run
+        - name: run-libvirt
+          hostPath:
+            path: /run/libvirt
         - name: dev
           hostPath:
             path: /dev
