@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1](https://github.com/vexxhost/openstack-helm/compare/libvirt-v1.1.0...libvirt-v1.1.1) (2025-10-15)
+
+
+### Bug Fixes
+
+* **libvirt:** add default-container ([f9ea370](https://github.com/vexxhost/openstack-helm/commit/f9ea370b2a0a93a4b76a6d9eaa9926cb37ebe917))
+
 ## [1.1.0](https://github.com/vexxhost/openstack-helm/compare/libvirt-v1.0.0...libvirt-v1.1.0) (2025-09-23)
 
 

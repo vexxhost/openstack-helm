@@ -14,7 +14,7 @@ apiVersion: v2
 appVersion: v1.0.0
 description: OpenStack-Helm libvirt
 name: libvirt
-version: 1.1.0
+version: 1.1.1
 home: https://libvirt.org
 sources:
   - https://libvirt.org/git/?p=libvirt.git;a=summary
