@@ -63,7 +63,7 @@
   "nova": "2025.1.0",
   "octavia": "2025.1.0",
   "openstack": "2025.1.0",
-  "openvswitch": "2025.1.0",
+  "openvswitch": "1.0.0",
   "ovn": "2025.1.0",
   "placement": "2025.1.0",
   "postgresql": "2025.1.0",

@@ -55,27 +55,28 @@ pod:
         liveness:
           enabled: true
           params:
-            initialDelaySeconds: 60
+            initialDelaySeconds: 10
             periodSeconds: 30
             timeoutSeconds: 5
         readiness:
           enabled: true
           params:
-            initialDelaySeconds: 90
+            initialDelaySeconds: 10
             periodSeconds: 30
             timeoutSeconds: 5
       ovs_vswitch:
         liveness:
           enabled: true
           params:
-            initialDelaySeconds: 60
+            initialDelaySeconds: 10
             periodSeconds: 30
             timeoutSeconds: 5
         readiness:
           enabled: true
           params:
-            failureThreshold: 3
+            initialDelaySeconds: 10
             periodSeconds: 10
+            failureThreshold: 3
             timeoutSeconds: 1
   security_context:
     ovs:
@@ -111,7 +112,8 @@ pod:
         ovs:
           enabled: true
           min_ready_seconds: 0
-          max_unavailable: 1
+          max_unavailable: 0
+          max_surge: 1
   resources:
     enabled: false
     ovs:

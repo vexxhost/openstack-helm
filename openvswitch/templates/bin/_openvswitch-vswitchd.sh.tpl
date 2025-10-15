@@ -114,7 +114,7 @@ function start () {
   fi
 {{- end }}
 
-  exec /usr/sbin/ovs-vswitchd unix:${OVS_SOCKET} \
+  exec ovsinit -- /usr/sbin/ovs-vswitchd unix:${OVS_SOCKET} \
           -vconsole:emer \
           -vconsole:err \
           -vconsole:info \
@@ -126,8 +126,7 @@ function start () {
 }
 
 function stop () {
-  PID=$(cat $OVS_PID)
-  ovs-appctl -T1 -t /run/openvswitch/ovs-vswitchd.${PID}.ctl exit
+  echo skipped due to ovsinit
 }
 
 find_latest_ctl_file() {
