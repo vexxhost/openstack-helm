@@ -660,6 +660,22 @@ entries:
     urls:
     - https://github.com/vexxhost/openstack-helm/releases/download/helm-toolkit-2025.1.0/helm-toolkit-2025.1.0.tgz
     version: 2025.1.0
+  - apiVersion: v2
+    appVersion: v1.0.0
+    created: "2025-10-15T19:28:57.185123743Z"
+    description: OpenStack-Helm Helm-Toolkit
+    digest: 9d31c59e96e986928bbe75475c5de39f909c69b19678dc8c7f966211ea72a9b1
+    home: https://docs.openstack.org/openstack-helm
+    icon: https://www.openstack.org/themes/openstack/images/project-mascots/OpenStack-Helm/OpenStack_Project_OpenStackHelm_vertical.png
+    maintainers:
+    - name: OpenStack-Helm Authors
+    name: helm-toolkit
+    sources:
+    - https://opendev.org/openstack/openstack-helm
+    - https://opendev.org/openstack/openstack-helm
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/helm-toolkit-1.1.0/helm-toolkit-1.1.0.tgz
+    version: 1.1.0
   horizon:
   - apiVersion: v2
     appVersion: v1.0.0
@@ -840,6 +856,25 @@ entries:
     urls:
     - https://github.com/vexxhost/openstack-helm/releases/download/libvirt-2025.1.0/libvirt-2025.1.0.tgz
     version: 2025.1.0
+  - apiVersion: v2
+    appVersion: v1.0.0
+    created: "2025-10-15T19:28:57.400337171Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../helm-toolkit
+      version: '>= 0.1.0'
+    description: OpenStack-Helm libvirt
+    digest: e8803e35e8ce1b988cb527e99d29f367c22d6d78ab23db77e60ddaec433d2a5a
+    home: https://libvirt.org
+    maintainers:
+    - name: OpenStack-Helm Authors
+    name: libvirt
+    sources:
+    - https://libvirt.org/git/?p=libvirt.git;a=summary
+    - https://opendev.org/openstack/openstack-helm
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/libvirt-1.1.1/libvirt-1.1.1.tgz
+    version: 1.1.1
   - apiVersion: v2
     appVersion: v1.0.0
     created: "2025-09-23T18:48:29.333174883Z"
@@ -1333,6 +1368,26 @@ entries:
     urls:
     - https://github.com/vexxhost/openstack-helm/releases/download/openvswitch-2025.1.0/openvswitch-2025.1.0.tgz
     version: 2025.1.0
+  - apiVersion: v2
+    appVersion: v1.0.0
+    created: "2025-10-15T19:28:57.585267372Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../helm-toolkit
+      version: '>= 0.1.0'
+    description: OpenStack-Helm OpenVSwitch
+    digest: 995ba449dfd80bb1b4b7b7f811d9a5d8e9c84dfb737741c062f7eed91378cfd5
+    home: http://openvswitch.org
+    icon: https://www.openstack.org/themes/openstack/images/project-mascots/Neutron/OpenStack_Project_Neutron_vertical.png
+    maintainers:
+    - name: OpenStack-Helm Authors
+    name: openvswitch
+    sources:
+    - https://github.com/openvswitch/ovs
+    - https://opendev.org/openstack/openstack-helm
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/openvswitch-1.1.0/openvswitch-1.1.0.tgz
+    version: 1.1.0
   ovn:
   - apiVersion: v2
     appVersion: v23.3.0
@@ -1774,4 +1829,4 @@ entries:
     urls:
     - https://github.com/vexxhost/openstack-helm/releases/download/zaqar-2025.1.0/zaqar-2025.1.0.tgz
     version: 2025.1.0
-generated: "2025-09-23T18:48:29.333201653Z"
+generated: "2025-10-15T19:28:57.585299832Z"
