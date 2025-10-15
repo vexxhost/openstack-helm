@@ -32,7 +32,7 @@
   "gnocchi": "2025.1.0",
   "grafana": "2025.1.0",
   "heat": "2025.1.0",
-  "helm-toolkit": "2025.1.0",
+  "helm-toolkit": "1.0.0",
   "horizon": "2025.1.0",
   "ironic": "2025.1.0",
   "keystone": "2025.1.0",
