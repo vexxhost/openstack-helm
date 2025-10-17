@@ -134,6 +134,11 @@ spec:
           command:
             - /tmp/openvswitch-db-server.sh
             - start
+          env:
+            - name: POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
           lifecycle:
             preStop:
               exec:
@@ -181,6 +186,11 @@ It should be handled through lcore and pmd core masks. */}}
             - /tmp/openvswitch-vswitchd.sh
             - start
 {{- end }}
+          env:
+            - name: POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
           lifecycle:
             postStart:
               exec:
