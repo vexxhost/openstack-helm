@@ -1370,6 +1370,26 @@ entries:
     version: 2025.1.0
   - apiVersion: v2
     appVersion: v1.0.0
+    created: "2025-10-17T17:03:16.560778818Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../helm-toolkit
+      version: '>= 0.1.0'
+    description: OpenStack-Helm OpenVSwitch
+    digest: 5913527417886b7ec1b81b1898678c13229343e034b4d5bd7410e62435d8b39d
+    home: http://openvswitch.org
+    icon: https://www.openstack.org/themes/openstack/images/project-mascots/Neutron/OpenStack_Project_Neutron_vertical.png
+    maintainers:
+    - name: OpenStack-Helm Authors
+    name: openvswitch
+    sources:
+    - https://github.com/openvswitch/ovs
+    - https://opendev.org/openstack/openstack-helm
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/openvswitch-1.1.1/openvswitch-1.1.1.tgz
+    version: 1.1.1
+  - apiVersion: v2
+    appVersion: v1.0.0
     created: "2025-10-15T19:28:57.585267372Z"
     dependencies:
     - name: helm-toolkit
@@ -1829,4 +1849,4 @@ entries:
     urls:
     - https://github.com/vexxhost/openstack-helm/releases/download/zaqar-2025.1.0/zaqar-2025.1.0.tgz
     version: 2025.1.0
-generated: "2025-10-15T19:28:57.585299832Z"
+generated: "2025-10-17T17:03:16.560813192Z"
