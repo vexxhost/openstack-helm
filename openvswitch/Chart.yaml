@@ -14,7 +14,7 @@ apiVersion: v2
 appVersion: v1.0.0
 description: OpenStack-Helm OpenVSwitch
 name: openvswitch
-version: 1.1.0
+version: 1.1.1
 home: http://openvswitch.org
 icon: https://www.openstack.org/themes/openstack/images/project-mascots/Neutron/OpenStack_Project_Neutron_vertical.png
 sources:
