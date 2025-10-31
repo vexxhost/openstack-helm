@@ -172,6 +172,8 @@ pod:
         value: "false"
       - name: OVN_NB_RAFT_ELECTION_TIMER
         value: "1000"
+      - name: OVN_NORTHD_PROBE_INTERVAL
+        value: "30000"
     ovsdb_sb:
       - name: OVN_LOGLEVEL_SB
         value: "-vconsole:info -vfile:info"
