@@ -1429,6 +1429,26 @@ entries:
     urls:
     - https://github.com/vexxhost/openstack-helm/releases/download/ovn-2025.1.0/ovn-2025.1.0.tgz
     version: 2025.1.0
+  - apiVersion: v2
+    appVersion: v23.3.0
+    created: "2025-11-09T01:46:42.344550412Z"
+    dependencies:
+    - name: helm-toolkit
+      repository: file://../helm-toolkit
+      version: '>= 0.1.0'
+    description: OpenStack-Helm OVN
+    digest: a5251b95a96b0d1f3a8210b12e5aac832c263099b18a96b1673a7c43e40cbe51
+    home: https://www.ovn.org
+    icon: https://www.ovn.org/images/ovn-logo.png
+    maintainers:
+    - name: OpenStack-Helm Authors
+    name: ovn
+    sources:
+    - https://github.com/ovn-org/ovn
+    - https://opendev.org/openstack/openstack-helm
+    urls:
+    - https://github.com/vexxhost/openstack-helm/releases/download/ovn-1.1.0/ovn-1.1.0.tgz
+    version: 1.1.0
   placement:
   - apiVersion: v2
     appVersion: v1.0.0
@@ -1849,4 +1869,4 @@ entries:
     urls:
     - https://github.com/vexxhost/openstack-helm/releases/download/zaqar-2025.1.0/zaqar-2025.1.0.tgz
     version: 2025.1.0
-generated: "2025-10-17T17:03:16.560813192Z"
+generated: "2025-11-09T01:46:42.344635037Z"
