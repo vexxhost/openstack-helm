@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/vexxhost/openstack-helm/compare/libvirt-v1.1.1...libvirt-v1.2.0) (2025-11-11)
+
+
+### Features
+
+* **libvirt:** stage 1.2.0 ([6cdc7af](https://github.com/vexxhost/openstack-helm/commit/6cdc7af1bc68d3803153a06f82707486a9e8eceb))
+
 ## [1.1.1](https://github.com/vexxhost/openstack-helm/compare/libvirt-v1.1.0...libvirt-v1.1.1) (2025-10-15)
 
 
