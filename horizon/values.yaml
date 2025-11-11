@@ -18,10 +18,10 @@
 ---
 images:
   tags:
-    db_init: quay.io/airshipit/heat:2024.1-ubuntu_jammy
-    horizon_db_sync: quay.io/airshipit/horizon:2024.1-ubuntu_jammy
-    db_drop: quay.io/airshipit/heat:2024.1-ubuntu_jammy
-    horizon: quay.io/airshipit/horizon:2024.1-ubuntu_jammy
+    db_init: quay.io/airshipit/heat:2025.1-ubuntu_noble
+    horizon_db_sync: quay.io/airshipit/horizon:2025.1-ubuntu_noble
+    db_drop: quay.io/airshipit/heat:2025.1-ubuntu_noble
+    horizon: quay.io/airshipit/horizon:2025.1-ubuntu_noble
     test: docker.io/openstackhelm/osh-selenium:latest-ubuntu_jammy
     dep_check: quay.io/airshipit/kubernetes-entrypoint:latest-ubuntu_focal
     image_repo_sync: docker.io/docker:17.07.0
@@ -84,9 +84,6 @@ conf:
       logo_splash:
       favicon:
     apache: |
-      <IfVersion < 2.4>
-      Listen 0.0.0.0:{{ tuple "dashboard" "internal" "web" . | include "helm-toolkit.endpoints.endpoint_port_lookup" }}
-      </IfVersion>
       LogFormat "%h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\"" combined
       LogFormat "%{X-Forwarded-For}i %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\"" proxy
 
@@ -114,9 +111,7 @@ conf:
               SetHandler static
           </Location>
 
-          <IfVersion >= 2.4>
-            ErrorLogFormat "%{cu}t %M"
-          </IfVersion>
+          ErrorLogFormat "%{cu}t %M"
           ErrorLog /dev/stdout
           TransferLog /dev/stdout
 
@@ -213,6 +208,10 @@ conf:
         use_ssl: "False"
         endpoint_type: "internalURL"
         keystone_multidomain_support: "True"
+        keystone_multidomain_dropdown: "False"
+        keystone_domains:
+          Default: "Default"
+          example_domain: "example"
         keystone_default_domain: Default
         disable_password_reveal: "True"
         show_openrc_file: "True"
@@ -231,6 +230,7 @@ conf:
         secure_proxy_ssl_header: false
         password_autocomplete: "False"
         disallow_iframe_embed: "False"
+        ssl_no_verify: "True"
         allowed_hosts:
           - '*'
         horizon_images_upload_mode: 'legacy'
@@ -339,6 +339,15 @@ conf:
         # Set this to True if running on multi-domain model. When this is enabled, it
         # will require user to enter the Domain name in addition to username for login.
         OPENSTACK_KEYSTONE_MULTIDOMAIN_SUPPORT = {{ .Values.conf.horizon.local_settings.config.keystone_multidomain_support }}
+        OPENSTACK_KEYSTONE_DOMAIN_DROPDOWN = {{ .Values.conf.horizon.local_settings.config.keystone_multidomain_dropdown }}
+        {{- $multiDomainDropdown := eq (lower .Values.conf.horizon.local_settings.config.keystone_multidomain_dropdown) "true" }}
+        {{- if $multiDomainDropdown }}
+        OPENSTACK_KEYSTONE_DOMAIN_CHOICES = (
+        {{- range $key, $label := .Values.conf.horizon.local_settings.config.keystone_domains }}
+            ('{{ $key }}', _('{{ $label }}')),
+        {{- end }}
+        )
+        {{- end }}
 
         # Overrides the default domain used when running on single-domain model
         # with Keystone V3. All entities will be created in the default domain.
@@ -488,7 +497,7 @@ conf:
         {{- end }}
 
         # Disable SSL certificate checks (useful for self-signed certificates):
-        #OPENSTACK_SSL_NO_VERIFY = True
+        OPENSTACK_SSL_NO_VERIFY = {{ .Values.conf.horizon.local_settings.config.ssl_no_verify }}
 
         {{- if .Values.manifests.certificates }}
         # The CA certificate to use to verify SSL connections
