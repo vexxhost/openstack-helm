@@ -1,6 +1,6 @@
 {
-  "helm-toolkit": "1.1.0",
-  "libvirt": "1.1.1",
-  "openvswitch": "1.1.1",
-  "ovn": "1.1.0"
+  "helm-toolkit": "1.2.0",
+  "libvirt": "1.2.0",
+  "openvswitch": "1.2.0",
+  "ovn": "1.2.0"
 }
