@@ -40,6 +40,10 @@ labels:
     node_selector_key: openstack-control-plane
     node_selector_value: enabled
 
+# NOTE(helm_hook): helm_hook might break for helm2 binary.
+# set helm3_hook: false when using the helm2 binary.
+helm3_hook: true
+
 images:
   tags:
     test: docker.io/xrally/xrally-openstack:2.0.0
@@ -382,6 +386,7 @@ conf:
   octavia_api_uwsgi:
     uwsgi:
       processes: 4
+      http-socket: "0.0.0.0:9876"
       add-header: "Connection: close"
       buffer-size: 65535
       die-on-term: true
@@ -395,7 +400,7 @@ conf:
       route-user-agent: '^kube-probe.* donotlog:'
       thunder-lock: true
       worker-reload-mercy: 80
-      wsgi-file: /var/lib/openstack/bin/octavia-wsgi
+      module: "octavia.wsgi.api:application"
 
 secrets:
   identity:

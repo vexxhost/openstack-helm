@@ -9,13 +9,12 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
 ---
 apiVersion: v2
 appVersion: v23.3.0
 description: OpenStack-Helm OVN
 name: ovn
-version: 2025.1.0
+version: 1.2.0
 home: https://www.ovn.org
 icon: https://www.ovn.org/images/ovn-logo.png
 sources:
