@@ -850,7 +850,11 @@ conf:
       # via the endpoints section.
       osapi_volume_listen_port: null
       enabled_backends: "rbd1"
+      # When using external Ceph, add the external backend name here, e.g.:
+      # enabled_backends: "rbd1,external_rbd"
       default_volume_type: "rbd1"
+      # When using external Ceph as default, change this to the external backend name, e.g.:
+      # default_volume_type: "external_rbd"
       # NOTE(portdirect): "cinder.backup.drivers.ceph"  and
       # "cinder.backup.drivers.posix" also supported
       # NOTE(rchurch): As of Stein, drivers by class name are required
