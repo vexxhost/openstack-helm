@@ -168,46 +168,6 @@ spec:
               readOnly: true
 {{- end }}
       containers:
-        - name: tls-sidecar
-{{ tuple $envAll "libvirt_tls_sidecar" | include "helm-toolkit.snippets.image" | indent 10 }}
-{{ tuple $envAll $envAll.Values.pod.resources.libvirt_tls_sidecar | include "helm-toolkit.snippets.kubernetes_resources" | indent 10 }}
-{{ dict "envAll" $envAll "application" "libvirt" "container" "libvirt_tls_sidecar" | include "helm-toolkit.snippets.kubernetes_container_security_context" | indent 10 }}
-          env:
-            - name: API_ISSUER_KIND
-              value: {{ .Values.issuers.libvirt.kind }}
-            - name: API_ISSUER_NAME
-              value: {{ .Values.issuers.libvirt.name }}
-            - name: VNC_ISSUER_KIND
-              value: {{ .Values.issuers.vencrypt.kind }}
-            - name: VNC_ISSUER_NAME
-              value: {{ .Values.issuers.vencrypt.name }}
-            - name: POD_UID
-              valueFrom:
-                fieldRef:
-                  fieldPath: metadata.uid
-            - name: POD_NAME
-              valueFrom:
-                fieldRef:
-                  fieldPath: metadata.name
-            - name: POD_NAMESPACE
-              valueFrom:
-                fieldRef:
-                  fieldPath: metadata.namespace
-            - name: POD_IP
-              valueFrom:
-                fieldRef:
-                  fieldPath: status.podIP
-          volumeMounts:
-            - name: etc-pki-qemu
-              mountPath: /etc/pki/qemu
-            - name: etc-pki-ca
-              mountPath: /etc/pki/CA
-            - name: etc-pki-libvirt
-              mountPath: /etc/pki/libvirt
-            - name: etc-pki-libvirt-vnc
-              mountPath: /etc/pki/libvirt-vnc
-            - name: run-libvirt
-              mountPath: /run/libvirt
         - name: libvirt
 {{ tuple $envAll "libvirt" | include "helm-toolkit.snippets.image" | indent 10 }}
 {{ tuple $envAll $envAll.Values.pod.resources.libvirt | include "helm-toolkit.snippets.kubernetes_resources" | indent 10 }}
@@ -327,6 +287,46 @@ spec:
             {{- end }}
 {{ if $mounts_libvirt.volumeMounts }}{{ toYaml $mounts_libvirt.volumeMounts | indent 12 }}{{ end }}
         {{- if .Values.pod.sidecars.libvirt_exporter.enabled }}
+        - name: tls-sidecar
+{{ tuple $envAll "libvirt_tls_sidecar" | include "helm-toolkit.snippets.image" | indent 10 }}
+{{ tuple $envAll $envAll.Values.pod.resources.libvirt_tls_sidecar | include "helm-toolkit.snippets.kubernetes_resources" | indent 10 }}
+{{ dict "envAll" $envAll "application" "libvirt" "container" "libvirt_tls_sidecar" | include "helm-toolkit.snippets.kubernetes_container_security_context" | indent 10 }}
+          env:
+            - name: API_ISSUER_KIND
+              value: {{ .Values.issuers.libvirt.kind }}
+            - name: API_ISSUER_NAME
+              value: {{ .Values.issuers.libvirt.name }}
+            - name: VNC_ISSUER_KIND
+              value: {{ .Values.issuers.vencrypt.kind }}
+            - name: VNC_ISSUER_NAME
+              value: {{ .Values.issuers.vencrypt.name }}
+            - name: POD_UID
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.uid
+            - name: POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: POD_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+            - name: POD_IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.podIP
+          volumeMounts:
+            - name: etc-pki-qemu
+              mountPath: /etc/pki/qemu
+            - name: etc-pki-ca
+              mountPath: /etc/pki/CA
+            - name: etc-pki-libvirt
+              mountPath: /etc/pki/libvirt
+            - name: etc-pki-libvirt-vnc
+              mountPath: /etc/pki/libvirt-vnc
+            - name: run-libvirt
+              mountPath: /run/libvirt
         - name: libvirt-exporter
 {{ tuple $envAll "libvirt_exporter" | include "helm-toolkit.snippets.image" | indent 10 }}
 {{ tuple $envAll $envAll.Values.pod.resources.libvirt_exporter | include "helm-toolkit.snippets.kubernetes_resources" | indent 10 }}
