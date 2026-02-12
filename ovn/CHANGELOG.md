@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.1](https://github.com/vexxhost/openstack-helm/compare/ovn-1.2.0...ovn-v1.2.1) (2026-02-12)
+
+
+### Bug Fixes
+
+* correct affinity rule for ovn-northd ([#16](https://github.com/vexxhost/openstack-helm/issues/16)) ([5ad1691](https://github.com/vexxhost/openstack-helm/commit/5ad169123af60ea3c0ea3a457d23a763e6a6b74f))
+
 ## [1.2.0](https://github.com/vexxhost/openstack-helm/compare/ovn-v1.1.0...ovn-v1.2.0) (2025-11-11)
 
 

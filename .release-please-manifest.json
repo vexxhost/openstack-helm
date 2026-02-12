@@ -2,5 +2,5 @@
   "helm-toolkit": "1.2.0",
   "libvirt": "1.2.0",
   "openvswitch": "1.2.0",
-  "ovn": "1.2.0"
+  "ovn": "1.2.1"
 }
