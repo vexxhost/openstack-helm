@@ -53,7 +53,7 @@ spec:
     spec:
       serviceAccountName: {{ $serviceAccountName }}
       affinity:
-{{- tuple $envAll "ovn" "ovn_northd" | include "helm-toolkit.snippets.kubernetes_pod_anti_affinity" | indent 8 }}
+{{- tuple $envAll "ovn" "ovn-northd" | include "helm-toolkit.snippets.kubernetes_pod_anti_affinity" | indent 8 }}
       nodeSelector:
         {{ .Values.labels.ovn_northd.node_selector_key }}: {{ .Values.labels.ovn_northd.node_selector_value }}
       initContainers:
