@@ -17,16 +17,22 @@ limitations under the License.
 set -ex
 export HOME=/tmp
 
-cat <<EOF > /etc/ceph/ceph.client.${RBD_USER}.keyring
-[client.${RBD_USER}]
-    key = $(cat /tmp/client-keyring)
-EOF
-
 {{- if and .Values.ceph_client.enable_external_ceph_backend .Values.ceph_client.external_ceph.rbd_user }}
-cat <<EOF > /etc/ceph/ceph.client.${EXTERNAL_RBD_USER}.keyring
+# Handle external Ceph keyring
+if [ -n "${EXTERNAL_RBD_USER}" ] && [ -f /tmp/external-ceph-client-keyring ]; then
+  cat <<EOF > /etc/ceph/ceph.client.${EXTERNAL_RBD_USER}.keyring
 [client.${EXTERNAL_RBD_USER}]
     key = $(cat /tmp/external-ceph-client-keyring)
 EOF
+fi
 {{- end }}
+
+# Handle internal Ceph keyring (only if mounted)
+if [ -n "${RBD_USER}" ] && [ -f /tmp/client-keyring ]; then
+  cat <<EOF > /etc/ceph/ceph.client.${RBD_USER}.keyring
+[client.${RBD_USER}]
+    key = $(cat /tmp/client-keyring)
+EOF
+fi
 
 exit 0
