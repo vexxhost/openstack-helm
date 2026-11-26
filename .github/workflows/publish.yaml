@@ -1,0 +1,164 @@
+# Publish the charts of this fork to ghcr.io/vexxhost/openstack-helm.
+#
+# After every merge to master or a stable/* branch, the openstack-helm-publish
+# job in vexxhost/zuul-config-internal sends this repository an
+# `openstack-helm-merged` repository_dispatch with the branch and commit (GHCR
+# only accepts the Actions GITHUB_TOKEN, so publishing happens here). The
+# hourly run publishes anything a dispatch missed; versions already in GHCR
+# are skipped. GitHub runs repository_dispatch and schedule workflows from the
+# default branch only, so this workflow lives on master and publishes
+# whichever branch it is asked to. It is a downstream carry: see docs/forks.md
+# in vexxhost/images.
+name: publish
+
+on:
+  repository_dispatch:
+    types:
+      - openstack-helm-merged
+  schedule:
+    - cron: "23 * * * *"
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: "Branch to publish (e.g. master or stable/2026.1); all branches when empty"
+        required: false
+        type: string
+  pull_request:
+    paths:
+      - ".github/**"
+
+permissions:
+  contents: read
+
+env:
+  UPSTREAM_URL: https://github.com/openstack/openstack-helm.git
+
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+    outputs:
+      targets: ${{ steps.plan.outputs.targets }}
+    steps:
+      - name: Harden the runner (Audit all outbound calls)
+        uses: step-security/harden-runner@9af89fc71515a100421586dfdb3dc9c984fbf411 # v2.19.4
+        with:
+          egress-policy: audit
+
+      - name: Work out which branches and commits to publish
+        id: plan
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          PAYLOAD_BRANCH: ${{ github.event.client_payload.branch }}
+          PAYLOAD_SHA: ${{ github.event.client_payload.sha }}
+          INPUT_BRANCH: ${{ inputs.branch }}
+          REPOSITORY_URL: ${{ github.server_url }}/${{ github.repository }}.git
+        run: |
+          set -euo pipefail
+          valid_branch='^(master|stable/[A-Za-z0-9._-]+)$'
+          if [ "$EVENT_NAME" = repository_dispatch ]; then
+            if ! [[ "$PAYLOAD_BRANCH" =~ $valid_branch ]] || ! [[ "$PAYLOAD_SHA" =~ ^[0-9a-f]{40}$ ]]; then
+              echo "::error::The dispatch needs a branch and a full commit SHA."
+              exit 1
+            fi
+            targets=$(jq -cn --arg branch "$PAYLOAD_BRANCH" --arg ref "$PAYLOAD_SHA" \
+              '[{branch: $branch, ref: $ref}]')
+          else
+            branches=$(git ls-remote --heads "$REPOSITORY_URL" \
+              | awk '{sub("refs/heads/", "", $2); print $2}' | grep -E "$valid_branch" || true)
+            if [ -n "$INPUT_BRANCH" ]; then
+              branches=$(printf '%s\n' "$branches" | grep -Fx -- "$INPUT_BRANCH" || true)
+            fi
+            if [ -z "$branches" ]; then
+              echo "::error::No branch to publish."
+              exit 1
+            fi
+            targets=$(printf '%s\n' "$branches" | jq -Rcn '[inputs | {branch: ., ref: .}]')
+          fi
+          echo "targets=$targets" >> "$GITHUB_OUTPUT"
+
+  publish:
+    needs: plan
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+      id-token: write
+    strategy:
+      fail-fast: false
+      matrix:
+        target: ${{ fromJSON(needs.plan.outputs.targets) }}
+    concurrency:
+      group: publish-${{ matrix.target.branch }}
+      cancel-in-progress: false
+    env:
+      BRANCH: ${{ matrix.target.branch }}
+      DRY_RUN: ${{ github.event_name == 'pull_request' && '--dry-run' || '' }}
+    steps:
+      - name: Harden the runner (Audit all outbound calls)
+        uses: step-security/harden-runner@9af89fc71515a100421586dfdb3dc9c984fbf411 # v2.19.4
+        with:
+          egress-policy: audit
+
+      # The publisher comes from the workflow's own commit; the charts from
+      # the branch being published.
+      - name: Checkout the publisher
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+        with:
+          path: publisher
+          sparse-checkout: .github
+          persist-credentials: false
+
+      - name: Checkout ${{ matrix.target.branch }}
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+        with:
+          ref: ${{ matrix.target.ref }}
+          path: charts
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Check the commit and fetch upstream tags
+        working-directory: charts
+        run: |
+          set -euo pipefail
+          # A dispatched commit must be on the branch it claims to be from.
+          git merge-base --is-ancestor HEAD "origin/${BRANCH}"
+          # tools/chart_version.sh counts commits since upstream's release tags.
+          git fetch --quiet --no-tags "$UPSTREAM_URL" '+refs/tags/*:refs/tags/*'
+
+      - name: Install Helm
+        uses: azure/setup-helm@2f5e7bc67f1f9972ab16657bb795f36d8f04de0e # v5.1.0
+        with:
+          version: v4.2.0
+
+      - name: Install ORAS
+        uses: oras-project/setup-oras@ac735097e22fe643015b0d19645f7c9a69942128 # v2.0.4
+        with:
+          version: 1.3.0
+
+      - name: Install cosign
+        if: github.event_name != 'pull_request'
+        uses: sigstore/cosign-installer@881c63bd87e38389154debd8331404ce7ca8a3ab # v4.1.4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@1db35dd8eee11c5894872e0b383ae6c406cf738d # v10.4.0
+
+      - name: Login to GHCR
+        if: github.event_name != 'pull_request'
+        uses: docker/login-action@74a5d142397b4f367a81961eba4e8cd7edddf772 # v3.4.0
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Login to GHCR (Helm)
+        if: github.event_name != 'pull_request'
+        env:
+          REGISTRY_USER: ${{ github.actor }}
+          REGISTRY_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: printf '%s' "$REGISTRY_TOKEN" | helm registry login ghcr.io -u "$REGISTRY_USER" --password-stdin
+
+      - name: Publish charts
+        run: |
+          set -euo pipefail
+          uv run publisher/.github/scripts/publish.py --fork charts $DRY_RUN \
+            | tee -a "$GITHUB_STEP_SUMMARY"
