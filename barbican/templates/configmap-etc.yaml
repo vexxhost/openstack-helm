@@ -49,12 +49,12 @@ limitations under the License.
 {{- $_ := set .Values.conf.barbican.keystone_authtoken "memcache_secret_key" ( default ( randAlphaNum 64 ) .Values.endpoints.oslo_cache.auth.memcache_secret_key ) -}}
 {{- end -}}
 
-{{- if empty .Values.conf.barbican.DEFAULT.sql_connection -}}
+{{- if empty .Values.conf.barbican.database.connection -}}
 {{- $connection := tuple "oslo_db" "internal" "barbican" "mysql" . | include "helm-toolkit.endpoints.authenticated_endpoint_uri_lookup" -}}
 {{- if .Values.manifests.certificates -}}
-{{- $_ := (printf "%s?charset=utf8&ssl_ca=/etc/mysql/certs/ca.crt&ssl_key=/etc/mysql/certs/tls.key&ssl_cert=/etc/mysql/certs/tls.crt&ssl_verify_cert" $connection ) | set .Values.conf.barbican.DEFAULT "sql_connection" -}}
+{{- $_ := (printf "%s?charset=utf8&ssl_ca=/etc/mysql/certs/ca.crt&ssl_key=/etc/mysql/certs/tls.key&ssl_cert=/etc/mysql/certs/tls.crt&ssl_verify_cert" $connection ) | set .Values.conf.barbican.database "connection" -}}
 {{- else -}}
-{{- $_ := set .Values.conf.barbican.DEFAULT "sql_connection" $connection -}}
+{{- $_ := set .Values.conf.barbican.database "connection" $connection -}}
 {{- end -}}
 {{- end -}}
 
@@ -67,12 +67,10 @@ limitations under the License.
 {{- $_ := tuple "key_manager" "public" "api" . | include "helm-toolkit.endpoints.keystone_endpoint_uri_lookup" | trimSuffix $barbicanPath | set .Values.conf.barbican.DEFAULT "host_href" -}}
 {{- end -}}
 
-{{- if empty .Values.conf.barbican.barbican_api.bind_port -}}
-{{- $_ := tuple "key_manager" "service" "api" . | include "helm-toolkit.endpoints.endpoint_port_lookup" | set .Values.conf.barbican.barbican_api "bind_port" -}}
-{{- end -}}
-
-{{- if empty .Values.conf.barbican_api.uwsgi.socket -}}
-{{- $_ := printf ":%s" ( tuple "key_manager" "service" "api" . | include "helm-toolkit.endpoints.endpoint_port_lookup" ) | set .Values.conf.barbican_api.uwsgi "socket" -}}
+{{- if empty (index .Values.conf.barbican_api_uwsgi.uwsgi "http-socket") -}}
+{{- $http_socket_port := tuple "key_manager" "service" "api" . | include "helm-toolkit.endpoints.endpoint_port_lookup" | toString }}
+{{- $http_socket := printf "0.0.0.0:%s" $http_socket_port }}
+{{- $_ := set .Values.conf.barbican_api_uwsgi.uwsgi "http-socket" $http_socket -}}
 {{- end -}}
 
 {{- if and (empty .Values.conf.logging.handler_fluent) (has "fluent" .Values.conf.logging.handlers.keys) -}}
@@ -99,6 +97,6 @@ data:
   barbican-api-paste.ini: {{ include "helm-toolkit.utils.to_ini" .Values.conf.paste | b64enc }}
   api_audit_map.conf: {{ include "helm-toolkit.utils.to_ini" .Values.conf.audit_map | b64enc }}
   policy.yaml: {{ toYaml .Values.conf.policy | b64enc }}
-  barbican-api.ini: {{ include "helm-toolkit.utils.to_ini" .Values.conf.barbican_api | b64enc }}
-  old_kek: {{ index .Values.conf.simple_crypto_kek_rewrap "old_kek" | default "" | b64enc | quote }}
+  barbican-api-uwsgi.ini: {{ include "helm-toolkit.utils.to_ini" .Values.conf.barbican_api_uwsgi | b64enc }}
+  old_keks: {{ index .Values.conf.simple_crypto_kek_rewrap "old_kek" | default "" | b64enc | quote }}
 {{- end }}

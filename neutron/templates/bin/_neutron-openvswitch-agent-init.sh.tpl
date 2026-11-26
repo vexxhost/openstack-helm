@@ -196,14 +196,18 @@ function process_dpdk_nics {
   while IFS= read -r nic; do
     local port_name=$(get_dpdk_config_value ${nic} '.name')
     local pci_id=$(get_dpdk_config_value ${nic} '.pci_id')
+    local iface=$(get_dpdk_config_value ${nic} '.iface')
+    if [ -n ${iface} ] && [ -z ${pci_id} ]; then
+      local pci_id=$(get_address_by_nicname ${iface})
+    else
+      iface=$(get_name_by_pci_id "${pci_id}")
+    fi
     local bridge=$(get_dpdk_config_value ${nic} '.bridge')
     local vf_index=$(get_dpdk_config_value ${nic} '.vf_index')
 
     if [[ $(get_dpdk_config_value ${nic} '.migrate_ip') == true ]] ; then
       migrate_ip "${pci_id}" "${bridge}"
     fi
-
-    iface=$(get_name_by_pci_id "${pci_id}")
 
     if [ -n "${iface}" ]; then
       ip link set ${iface} promisc on
@@ -292,6 +296,12 @@ function process_dpdk_bonds {
     echo $bond | jq -r -c '.nics[]' > /tmp/nics_array
     while IFS= read -r nic; do
       local pci_id=$(get_dpdk_config_value ${nic} '.pci_id')
+      local iface=$(get_dpdk_config_value ${nic} '.iface')
+      if [ -n ${iface} ] && [ -z ${pci_id} ]; then
+        local pci_id=$(get_address_by_nicname ${iface})
+      else
+        iface=$(get_name_by_pci_id "${pci_id}")
+      fi
       local nic_name=$(get_dpdk_config_value ${nic} '.name')
       local pmd_rxq_affinity=$(get_dpdk_config_value ${nic} '.pmd_rxq_affinity')
       local vf_index=$(get_dpdk_config_value ${nic} '.vf_index')
@@ -301,8 +311,6 @@ function process_dpdk_bonds {
         migrate_ip "${pci_id}" "${dpdk_bridge}"
         ip_migrated=true
       fi
-
-      iface=$(get_name_by_pci_id "${pci_id}")
 
       if [ -n "${iface}" ]; then
         ip link set ${iface} promisc on
@@ -407,6 +415,12 @@ function get_driver_by_address {
   fi
 }
 
+function get_address_by_nicname {
+  if [[ -e /sys/class/net/$1/device ]]; then
+    readlink -f /sys/class/net/$1/device | xargs basename
+  fi
+}
+
 function init_ovs_dpdk_bridge {
   bridge=$1
   ovs-vsctl --db=unix:${OVS_SOCKET} --may-exist add-br ${bridge} \
@@ -435,12 +449,13 @@ do
   if [ -n "$iface" ] && [ "$iface" != "null" ] && ( ip link show $iface 1>/dev/null 2>&1 );
   then
     ovs-vsctl --db=unix:${OVS_SOCKET} --may-exist add-port $bridge $iface
-    migrate_ip_from_nic $iface $bridge
     if [[ "${DPDK_ENABLED}" != "true" ]]; then
       ip link set dev $iface up
     fi
   fi
 done
+
+/usr/local/bin/ovsinit /tmp/auto_bridge_add
 
 tunnel_types="{{- .Values.conf.plugins.openvswitch_agent.agent.tunnel_types -}}"
 if [[ -n "${tunnel_types}" ]] ; then

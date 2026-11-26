@@ -356,18 +356,28 @@ conf:
     service_endpoints:
       # map endpoint type defined in service catalog to CADF typeURI
       key-manager: service/security/keymanager
-  barbican_api:
+  barbican_api_uwsgi:
     uwsgi:
-      socket: null
-      protocol: http
-      processes: 1
-      lazy: true
-      vacuum: true
-      no-default-app: true
-      memory-report: true
-      plugins: python
-      paste: "config:/etc/barbican/barbican-api-paste.ini"
       add-header: "Connection: close"
+      buffer-size: 65535
+      chunked-input-limit: "4096000"
+      die-on-term: true
+      enable-threads: true
+      exit-on-reload: false
+      hook-master-start: unix_signal:15 gracefully_kill_them_all
+      http-auto-chunked: true
+      http-raw-body: true
+      lazy-apps: true
+      log-x-forwarded-for: true
+      master: true
+      need-app: true
+      procname-prefix-spaced: "barbiacan-api:"
+      route-user-agent: '^kube-probe.* donotlog:'
+      socket-timeout: 10
+      thunder-lock: true
+      worker-reload-mercy: 80
+      module: "barbican.wsgi.api:application"
+      processes: 1
   barbican:
     DEFAULT:
       transport_url: null
@@ -389,7 +399,7 @@ conf:
     # When using the simple_crypto_plugin, a kek must be provided as:
     #   .conf.barbican.simple_crypto_plugin.kek
     # If no kek is provided, barbican will use a well-known default.
-    # If upgrading the chart with a new kek, the old kek must be provided as:
+    # If upgrading the chart with a new kek, the old kek must be provided in:
     #   .conf.simple_crypto_plugin_rewrap.old_kek
     # Please refer to the .conf.simple_crypto_key_rewrap section below.
     # The barbican defaults are included here as a reference:
@@ -401,11 +411,13 @@ conf:
     #       - simple_crypto
     #   simple_crypto_plugin:
     #     # The kek should be a 32-byte value which is base64 encoded.
+    #     # First key is used for ecnrypting new data
     #     kek: "dGhpcnR5X3R3b19ieXRlX2tleWJsYWhibGFoYmxhaGg="
+    #     # Additional keys used for decrypting existing data
+    #     kek: "xCDpcnR5X3R3b19ieXRlX2tleWJsYWhibGFoYmxhaGg="
   # KEK rotation for the simple_crypto plugin
   simple_crypto_kek_rewrap:
-
-    # To allow for chart upgrades when modifying the Key Encryption Key, the
+    # To allow for chart upgrades when modifying the Key Encryption Keys, the
     # db-sync job can rewrap the existing project keys with the new kek, leaving
     # each secret’s encrypted data unchanged.
 
@@ -423,6 +435,11 @@ conf:
     # The KEK value "dGhpcnR5X3R3b19ieXRlX2tleWJsYWhibGFoYmxhaGg=" matches the
     # plugin default, and is retained here for convenience, in case the chart was
     # previously installed without explicitly specifying a kek.
+    # old_kek allows commna-separated string for keks
+    # old_kek:
+    #   # First key is used for ecnrypting new data
+    #   # Additional keys used for decrypting existing data
+    #   - "dGhpcnR5X3R3b19ieXRlX2tleWJsYWhibGFoYmxhaGg=,dDDpcnR5X3R3b19ieXRlX2tleWJsYWhibGFoYmxhaGg="
     old_kek: "dGhpcnR5X3R3b19ieXRlX2tleWJsYWhibGFoYmxhaGg="
   logging:
     loggers:

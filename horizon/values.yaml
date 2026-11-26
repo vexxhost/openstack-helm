@@ -77,6 +77,7 @@ conf:
         - status
   horizon:
     branding:
+      # logo, logo_splash and favicon accepts base64 encoded string.
       logo:
       logo_splash:
       favicon:
@@ -92,8 +93,9 @@ conf:
       CustomLog /dev/stdout proxy env=forwarded
 
       <VirtualHost *:{{ tuple "dashboard" "internal" "web" . | include "helm-toolkit.endpoints.endpoint_port_lookup" }}>
+          WSGIApplicationGroup %{GLOBAL}
           WSGIScriptReloading On
-          WSGIDaemonProcess horizon-http processes=5 threads=1 user=horizon group=horizon display-name=%{GROUP} python-path=/var/lib/kolla/venv/lib/python2.7/site-packages
+          WSGIDaemonProcess horizon-http processes=5 threads=1 user=horizon group=horizon display-name=%{GROUP}
           WSGIProcessGroup horizon-http
           WSGIScriptAlias / /var/www/cgi-bin/horizon/django.wsgi
           WSGIPassAuthorization On
@@ -261,7 +263,7 @@ conf:
       template: |
         import os
 
-        from django.utils.translation import ugettext_lazy as _
+        from django.utils.translation import gettext_lazy as _
 
         from openstack_dashboard import exceptions
 
@@ -393,7 +395,7 @@ conf:
 
         CACHES = {
             'default': {
-                'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+                'BACKEND': 'django.core.cache.backends.memcached.PyMemcacheCache',
                 'LOCATION': '{{ tuple "oslo_cache" "internal" "memcache" . | include "helm-toolkit.endpoints.host_and_port_endpoint_uri_lookup" }}',
             }
         }

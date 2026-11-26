@@ -1435,6 +1435,7 @@ conf:
       auth_type: password
       auth_version: v3
     cinder:
+      auth_type: password
       catalog_info: volumev3::internalURL
     database:
       max_retries: -1
@@ -1583,7 +1584,7 @@ conf:
       route-user-agent: '^kube-probe.* donotlog:'
       thunder-lock: true
       worker-reload-mercy: 80
-      wsgi-file: /var/lib/openstack/bin/nova-api-wsgi
+      module: "nova.wsgi.osapi_compute:application"
   nova_metadata_uwsgi:
     uwsgi:
       add-header: "Connection: close"
@@ -1599,7 +1600,7 @@ conf:
       route-user-agent: '^kube-probe.* donotlog:'
       thunder-lock: true
       worker-reload-mercy: 80
-      wsgi-file: /var/lib/openstack/bin/nova-metadata-wsgi
+      module: "nova.wsgi.metadata:application"
 
 # Names of secrets used by bootstrap and environmental checks
 secrets:
@@ -1856,6 +1857,22 @@ endpoints:
     port:
       api:
         default: 9292
+        public: 80
+  volumev3:
+    name: cinderv3
+    hosts:
+      default: cinder-api
+      public: cinder
+    host_fqdn_override:
+      default: null
+    path:
+      default: '/v3/%(tenant_id)s'
+      healthcheck: /healthcheck
+    scheme:
+      default: http
+    port:
+      api:
+        default: 8776
         public: 80
   compute:
     name: nova

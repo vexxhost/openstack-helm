@@ -45,6 +45,8 @@ spec:
         configmap-etc-hash: {{ tuple "configmap-etc.yaml" . | include "helm-toolkit.utils.hash" }}
 {{ dict "envAll" $envAll "podName" "heat-api" "containerNames" (list "heat-api" "init" ) | include "helm-toolkit.snippets.kubernetes_mandatory_access_control_annotation" | indent 8 }}
     spec:
+{{ tuple "heat_api" . | include "helm-toolkit.snippets.kubernetes_pod_priority_class" | indent 6 }}
+{{ tuple "heat_api" . | include "helm-toolkit.snippets.kubernetes_pod_runtime_class" | indent 6 }}
       serviceAccountName: {{ $serviceAccountName }}
 {{ dict "envAll" $envAll "application" "heat" | include "helm-toolkit.snippets.kubernetes_pod_security_context" | indent 6 }}
       affinity:
@@ -89,7 +91,7 @@ spec:
               scheme: {{ tuple "orchestration" "service" "api" . | include "helm-toolkit.endpoints.keystone_endpoint_scheme_lookup" | upper }}
               path: /
               port: {{ tuple "orchestration" "service" "api" . | include "helm-toolkit.endpoints.endpoint_port_lookup" }}
-            initialDelaySeconds: 30
+            initialDelaySeconds: 10
           volumeMounts:
             - name: pod-tmp
               mountPath: /tmp
@@ -104,6 +106,10 @@ spec:
             - name: heat-etc
               mountPath: /etc/heat/heat.conf
               subPath: heat.conf
+              readOnly: true
+            - name: heat-etc
+              mountPath: /etc/heat/heat-api-uwsgi.ini
+              subPath: heat-api-uwsgi.ini
               readOnly: true
             {{ if .Values.conf.heat.DEFAULT.log_config_append }}
             - name: heat-etc

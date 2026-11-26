@@ -419,9 +419,10 @@ jobs:
     user: keystone
     group: keystone
   fernet_rotate:
-    # NOTE(rk760n): key rotation frequency, token expiration, active keys should statisfy the formula
-    # max_active_keys = (token_expiration / rotation_frequency) + 2
-    # as expiration is 12h, and max_active_keys set to 3 by default, rotation_frequency need to be adjusted
+    # NOTE(rk760n): key rotation frequency, token expiration, active keys, and allow_expired_window should statisfy the formula
+    # max_active_keys = ((token_expiration + allow_expired_window) / rotation_frequency) + 2
+    # As expiration is 12h, max_active_keys is 7 and allow_expired_window is 48h by default,
+    # rotation_frequency need to be adjusted
     # 12 hours
     cron: "0 */12 * * *"
     user: keystone
@@ -540,6 +541,7 @@ conf:
       domain_config_dir: /etc/keystone/domains
     fernet_tokens:
       key_repository: /etc/keystone/fernet-keys/
+      max_active_keys: 7
     credential:
       key_repository: /etc/keystone/credential-keys/
     database:
@@ -774,9 +776,20 @@ conf:
       MaxRequestsPerChild 128
       ThreadLimit         720
     </IfModule>
+  # -- WSGIScriptAlias for apache2. Copied from keystone/wsgi/api.py
+  ## apache cannot load a module and the path can change depending on python version
+  wsgi_script: |
+    import threading
+
+    from keystone.server import wsgi
+
+    application = None
+    lock = threading.Lock()
+    with lock:
+        if application is None:
+            application = wsgi.initialize_public_application()
   wsgi_keystone: |
     {{- $portInt := tuple "identity" "service" "api" $ | include "helm-toolkit.endpoints.endpoint_port_lookup" }}
-
     Listen 0.0.0.0:{{ $portInt }}
 
     LogFormat "%h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\"" combined
@@ -789,7 +802,7 @@ conf:
     <VirtualHost *:{{ $portInt }}>
         WSGIDaemonProcess keystone-public processes=1 threads=1 user=keystone group=keystone display-name=%{GROUP}
         WSGIProcessGroup keystone-public
-        WSGIScriptAlias / /var/www/cgi-bin/keystone/keystone-wsgi-public
+        WSGIScriptAlias / /var/www/cgi-bin/keystone/wsgi.py
         WSGIApplicationGroup %{GLOBAL}
         WSGIPassAuthorization On
         <IfVersion >= 2.4>

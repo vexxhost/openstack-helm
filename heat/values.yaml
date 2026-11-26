@@ -490,6 +490,48 @@ conf:
         priority: 0
         apply-to: all
         pattern: '^(?!(amq\.|reply_)).*'
+  heat_api_uwsgi:
+    uwsgi:
+      add-header: "Connection: close"
+      buffer-size: 65535
+      chunked-input-limit: "4096000"
+      die-on-term: true
+      enable-threads: true
+      exit-on-reload: false
+      hook-master-start: unix_signal:15 gracefully_kill_them_all
+      http-auto-chunked: true
+      http-raw-body: true
+      lazy-apps: true
+      log-x-forwarded-for: true
+      master: true
+      need-app: true
+      procname-prefix-spaced: "heat-api:"
+      route-user-agent: '^kube-probe.* donotlog:'
+      socket-timeout: 10
+      thunder-lock: true
+      worker-reload-mercy: 80
+      module: "heat.wsgi.api:application"
+  heat_api_cfn_uwsgi:
+    uwsgi:
+      add-header: "Connection: close"
+      buffer-size: 65535
+      chunked-input-limit: 4096000
+      die-on-term: true
+      enable-threads: true
+      exit-on-reload: false
+      hook-master-start: unix_signal:15 gracefully_kill_them_all
+      http-auto-chunked: true
+      http-raw-body: true
+      lazy-apps: true
+      log-x-forwarded-for: true
+      master: true
+      need-app: true
+      procname-prefix-spaced: "heat-api-cfn:"
+      route-user-agent: '^kube-probe.* donotlog:'
+      socket-timeout: 10
+      thunder-lock: true
+      worker-reload-mercy: 80
+      module: "heat.wsgi.cfn:application"
 
 network:
   api:
@@ -552,7 +594,6 @@ dependencies:
         - heat-db-sync
         - heat-rabbit-init
         - heat-ks-user
-        - heat-trustee-ks-user
         - heat-domain-ks-user
         - heat-ks-endpoints
         - heat-bootstrap
@@ -568,7 +609,6 @@ dependencies:
         - heat-db-sync
         - heat-rabbit-init
         - heat-ks-user
-        - heat-trustee-ks-user
         - heat-domain-ks-user
         - heat-ks-endpoints
         - heat-bootstrap
@@ -584,7 +624,6 @@ dependencies:
         - heat-db-sync
         - heat-rabbit-init
         - heat-ks-user
-        - heat-trustee-ks-user
         - heat-domain-ks-user
         - heat-ks-endpoints
         - heat-bootstrap
@@ -618,7 +657,6 @@ dependencies:
         - heat-db-sync
         - heat-rabbit-init
         - heat-ks-user
-        - heat-trustee-ks-user
         - heat-domain-ks-user
         - heat-ks-endpoints
         - heat-bootstrap
@@ -633,7 +671,6 @@ dependencies:
       jobs:
         - heat-db-sync
         - heat-ks-user
-        - heat-trustee-ks-user
         - heat-domain-ks-user
         - heat-ks-endpoints
       services:
@@ -647,7 +684,6 @@ dependencies:
       jobs:
         - heat-db-sync
         - heat-ks-user
-        - heat-trustee-ks-user
         - heat-domain-ks-user
         - heat-ks-endpoints
       services:
@@ -678,7 +714,6 @@ dependencies:
     trusts:
       jobs:
         - heat-ks-user
-        - heat-trustee-ks-user
         - heat-domain-ks-user
       services:
         - endpoint: internal

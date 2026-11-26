@@ -33,6 +33,8 @@ images:
     netoffload: ghcr.io/vexxhost/netoffload:v1.0.1
     neutron_server: docker.io/openstackhelm/neutron:2024.1-ubuntu_jammy
     neutron_rpc_server: docker.io/openstackhelm/neutron:2024.1-ubuntu_jammy
+    neutron_periodic_worker: docker.io/openstackhelm/neutron:2024.1-ubuntu_jammy
+    neutron_ovn_maintenance_worker: docker.io/openstackhelm/neutron:2024.1-ubuntu_jammy
     neutron_dhcp: docker.io/openstackhelm/neutron:2024.1-ubuntu_jammy
     neutron_metadata: docker.io/openstackhelm/neutron:2024.1-ubuntu_jammy
     neutron_ovn_metadata: docker.io/openstackhelm/neutron:2024.1-ubuntu_jammy
@@ -45,6 +47,7 @@ images:
     neutron_sriov_agent_init: docker.io/openstackhelm/neutron:stein-18.04-sriov
     neutron_bagpipe_bgp: docker.io/openstackhelm/neutron:2024.1-ubuntu_jammy
     neutron_bgp_dragent: docker.io/openstackhelm/neutron:2024.1-ubuntu_jammy
+    neutron_ironic_agent_init: docker.io/openstackhelm/neutron:2024.1-ubuntu_jammy
     neutron_ironic_agent: docker.io/openstackhelm/neutron:2024.1-ubuntu_jammy
     neutron_netns_cleanup_cron: docker.io/openstackhelm/neutron:2024.1-ubuntu_jammy
     dep_check: quay.io/airshipit/kubernetes-entrypoint:latest-ubuntu_focal
@@ -68,6 +71,9 @@ labels:
       node_selector_key: openstack-control-plane
       node_selector_value: enabled
     l2gw:
+      node_selector_key: openstack-control-plane
+      node_selector_value: enabled
+    ovn_vpn:
       node_selector_key: openstack-control-plane
       node_selector_value: enabled
   job:
@@ -96,6 +102,12 @@ labels:
     node_selector_key: openstack-control-plane
     node_selector_value: enabled
   rpc_server:
+    node_selector_key: openstack-control-plane
+    node_selector_value: enabled
+  periodic_worker:
+    node_selector_key: openstack-control-plane
+    node_selector_value: enabled
+  ovn_maintenance_worker:
     node_selector_key: openstack-control-plane
     node_selector_value: enabled
   ironic_agent:
@@ -345,6 +357,32 @@ dependencies:
         - endpoint: internal
           service: identity
     rpc_server:
+      jobs:
+        - neutron-db-sync
+        - neutron-rabbit-init
+      services:
+        - endpoint: internal
+          service: oslo_db
+        - endpoint: internal
+          service: oslo_messaging
+        - endpoint: internal
+          service: oslo_cache
+        - endpoint: internal
+          service: identity
+    periodic_worker:
+      jobs:
+        - neutron-db-sync
+        - neutron-rabbit-init
+      services:
+        - endpoint: internal
+          service: oslo_db
+        - endpoint: internal
+          service: oslo_messaging
+        - endpoint: internal
+          service: oslo_cache
+        - endpoint: internal
+          service: identity
+    ovn_maintenance_worker:
       jobs:
         - neutron-db-sync
         - neutron-rabbit-init
@@ -655,6 +693,20 @@ pod:
         neutron_rpc_server:
           allowPrivilegeEscalation: false
           readOnlyRootFilesystem: true
+    neutron_periodic_worker:
+      pod:
+        runAsUser: 42424
+      container:
+        neutron_periodic_worker:
+          allowPrivilegeEscalation: false
+          readOnlyRootFilesystem: true
+    neutron_ovn_maintenance_worker:
+      pod:
+        runAsUser: 42424
+      container:
+        neutron_ovn_maintenance_worker:
+          allowPrivilegeEscalation: false
+          readOnlyRootFilesystem: true
     neutron_sriov_agent:
       pod:
         runAsUser: 42424
@@ -670,6 +722,9 @@ pod:
       pod:
         runAsUser: 42424
       container:
+        neutron_ironic_agent_init:
+          runAsUser: 0
+          readOnlyRootFilesystem: true
         neutron_ironic_agent:
           allowPrivilegeEscalation: false
           readOnlyRootFilesystem: true
@@ -707,6 +762,16 @@ pod:
     neutron_rpc_server:
       init_container: null
       neutron_rpc_server:
+        volumeMounts:
+        volumes:
+    neutron_periodic_worker:
+      init_container: null
+      neutron_periodic_worker:
+        volumeMounts:
+        volumes:
+    neutron_ovn_maintenance_worker:
+      init_container: null
+      neutron_ovn_maintenance_worker:
         volumeMounts:
         volumes:
     neutron_dhcp_agent:
@@ -795,6 +860,8 @@ pod:
   replicas:
     server: 1
     rpc_server: 1
+    periodic_worker: 1
+    ovn_maintenance_worker: 1
     ironic_agent: 1
   lifecycle:
     upgrades:
@@ -849,6 +916,10 @@ pod:
       server:
         timeout: 30
       rpc_server:
+        timeout: 30
+      periodic_worker:
+        timeout: 30
+      ovn_maintenance_worker:
         timeout: 30
       ironic_agent:
         timeout: 30
@@ -933,6 +1004,20 @@ pod:
           memory: "1024Mi"
           cpu: "2000m"
     server:
+      requests:
+        memory: "128Mi"
+        cpu: "100m"
+      limits:
+        memory: "1024Mi"
+        cpu: "2000m"
+    periodic_worker:
+      requests:
+        memory: "128Mi"
+        cpu: "100m"
+      limits:
+        memory: "1024Mi"
+        cpu: "2000m"
+    ovn_maintenance_worker:
       requests:
         memory: "128Mi"
         cpu: "100m"
@@ -1366,7 +1451,7 @@ conf:
       route-user-agent: '^kube-probe.* donotlog:'
       thunder-lock: true
       worker-reload-mercy: 80
-      wsgi-file: /var/lib/openstack/bin/neutron-api
+      module: "neutron.wsgi.api:application"
   policy: {}
   api_audit_map:
     DEFAULT:
@@ -2113,6 +2198,8 @@ conf:
       interface_driver: null
       dnsmasq_config_file: /etc/neutron/dnsmasq.conf
       force_metadata: True
+    # NOTE(mnaser): This has to be here in order for the DHCP agent to work with OVN.
+    ovs: {}
   dnsmasq: |
       #no-hosts
       #port=5353
@@ -2130,6 +2217,7 @@ conf:
       #dhcp-option=3,10.10.10.1
       #dhcp-option-force=26,1450
 
+  neutron_fwaas: null
   neutron_vpnaas: null
   ovn_vpn_agent:
     DEFAULT:
@@ -2651,9 +2739,13 @@ manifests:
   daemonset_bagpipe_bgp: false
   daemonset_bgp_dragent: false
   daemonset_netns_cleanup_cron: true
+  daemonset_ovn_metadata_agent: false
+  daemonset_ovn_vpn_agent: false
   deployment_ironic_agent: false
   deployment_server: true
   deployment_rpc_server: true
+  deployment_periodic_worker: false
+  deployment_ovn_maintenance_worker: false
   ingress_server: true
   job_bootstrap: true
   job_db_init: true
